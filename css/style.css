@@ -12,42 +12,102 @@
 html {
   font-family: 'Lobster', cursive;
   scroll-behavior: smooth;
-  scroll-snap-type: mandatory; }
+  scroll-snap-type: mandatory;
+  font-size: 16px; }
 
 body {
   background-color: #e6e9e2;
   color: #0f1224; }
 
 .navbar {
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.15rem;
   height: 3.75rem;
-  background-color: red;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  color: #fbeb04;
+  justify-content: space-between;
   margin: 0 auto;
-  font-size: 1.35rem; }
-  .navbar .logo-area {
-    height: 100px;
-    width: 100px;
-    background-color: #0f1224;
-    position: absolute;
-    /* para pocicionar el logo al centro se hace left 50% y m-left: -la mitad del width total,
-        en este caso serian 50px, ya que tenemos un widht de 100px */
-    left: calc(50% - 50px);
-    text-align: center; }
+  padding: 1.875rem 10%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  transition: all 1s ease;
+  width: 100%;
+  z-index: 100;
+  background-color: #f00000; }
   .navbar .navbar__links {
-    list-style: none;
-    text-align: right; }
-    .navbar .navbar__links li {
-      float: none;
-      display: inline-block; }
-      .navbar .navbar__links li a {
-        text-decoration: none;
-        display: block;
-        padding: 15px 20px;
-        color: #e6e9e2; }
-      .navbar .navbar__links li:nth-child(1), .navbar .navbar__links li:nth-child(2) {
-        float: left; }
+    display: none; }
+  .navbar.open {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    color: #f00000; }
+    .navbar.open .navbar__links {
+      display: block; }
+    .navbar.open .li1 li:nth-child(1) {
+      margin-bottom: 3.125rem; }
+    .navbar.open .li2 li:nth-child(1) {
+      margin-bottom: 3.125rem; }
+    .navbar.open .navbar__links li {
+      display: flex; }
+  .navbar .navbar__hamburger {
+    position: absolute;
+    cursor: pointer;
+    top: .9375rem;
+    right: 5%;
+    z-index: 5; }
+    .navbar .navbar__hamburger .navbar__line {
+      background: #e6e9e2;
+      margin: .3125rem;
+      height: .1875rem;
+      width: 1.875rem; }
+  .navbar .navbar__links {
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s ease; }
+    .navbar .navbar__links .navbar__li,
+    .navbar .navbar__links .navbar__a {
+      list-style: none;
+      text-decoration: none; }
+    .navbar .navbar__links .navbar__li {
+      display: inline-block;
+      padding: 0 1.25rem; }
+    .navbar .navbar__links .navbar__li .navbar__a {
+      color: #e6e9e2;
+      transition: all .3s ease 0s; }
+    .navbar .navbar__links .navbar__li a:hover {
+      color: #fbeb04; }
+  .navbar .logo {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #e6e9e2;
+    transition: all .3s ease 0s; }
+    .navbar .logo:hover {
+      transform: scale(1.2);
+      color: #fbeb04; }
+  @media screen and (min-width: 53.125rem) {
+    .navbar {
+      background-color: transparent; }
+      .navbar.red {
+        background-color: #f00000;
+        box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2); }
+      .navbar .navbar__links {
+        display: block; }
+      .navbar .navbar__hamburger {
+        display: none; }
+      .navbar .li1 {
+        transform: translateX(-6.25rem); }
+      .navbar .li2 {
+        transform: translateX(6.25rem); }
+      .navbar .logo {
+        color: #0f1224; }
+      .navbar .navbar__links .navbar__li .navbar__a {
+        color: #0f1224; }
+        .navbar .navbar__links .navbar__li .navbar__a.color-grey {
+          color: #e6e9e2;
+          transition: all .5s ease; }
+          .navbar .navbar__links .navbar__li .navbar__a.color-grey:hover {
+            color: #fbeb04; }
+      .navbar .color-grey {
+        color: #e6e9e2; } }

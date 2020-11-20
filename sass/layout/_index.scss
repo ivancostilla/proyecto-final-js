@@ -8,50 +8,10 @@ html {
     font-family: 'Lobster', cursive;
     scroll-behavior: smooth;
     scroll-snap-type: mandatory;
+    font-size: 16px;
 }
 
 body {
     background-color: $color-grey;
     color: $color-black;
-}
-
-.navbar {
-    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .2);
-    width: 100%;
-    height: 3.75rem;
-    background-color: red;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    color: $color-light-yellow;
-    margin: 0 auto;
-    font-size: 1.35rem;
-    .logo-area {
-        height: 100px;
-        width: 100px;
-        background-color: $color-black;
-        position: absolute;
-        /* para pocicionar el logo al centro se hace left 50% y m-left: -la mitad del width total,
-        en este caso serian 50px, ya que tenemos un widht de 100px */
-        left: calc(50% - 50px);
-        text-align: center;
-    }
-    .navbar__links {
-        list-style: none;
-        text-align: right;
-        li {
-            float: none;
-            display: inline-block;
-            a {
-                text-decoration: none;
-                display: block;
-                padding: 15px 20px;
-                color: $color-grey;
-            }
-            &:nth-child(1),
-            &:nth-child(2) {
-                float: left;
-            }
-        }
-    }
 }
