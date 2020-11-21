@@ -123,3 +123,26 @@ body {
             color: #fbeb04; }
       .navbar .color-grey {
         color: #e6e9e2; } }
+
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: .125rem;
+  grid-auto-rows: 21.875rem;
+  /* hay que darle un height a la imagen para que funcione */
+  padding: .125rem 0; }
+  .galeria .galeria__img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    /* es para que no se distorsionen las imagenes */ }
+  @media screen and (min-width: 43.75rem) {
+    .galeria {
+      /* media querie 700px */
+      grid-template-columns: repeat(2, 1fr); } }
+  @media screen and (min-width: 62.5rem) {
+    .galeria {
+      /* media querie 1000px */
+      grid-template-columns: repeat(3, 1fr); } }
+
+/*fin estilos seccion gallery */
