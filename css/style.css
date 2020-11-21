@@ -89,6 +89,18 @@ body {
   @media screen and (min-width: 53.125rem) {
     .navbar {
       background-color: transparent; }
+      .navbar.open {
+        flex-direction: row;
+        height: 3.75rem;
+        justify-content: space-between; }
+        .navbar.open .navbar__links {
+          display: inline-block; }
+        .navbar.open .li1 li:nth-child(1) {
+          margin-bottom: 0; }
+        .navbar.open .li2 li:nth-child(1) {
+          margin-bottom: 0; }
+        .navbar.open .navbar__links li {
+          display: inline-block; }
       .navbar.red {
         background-color: #f00000;
         box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2); }
