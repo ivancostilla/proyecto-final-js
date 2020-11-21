@@ -1,11 +1,13 @@
 const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
+const imgPopup = document.querySelectorAll('galeria__img');
 
-/* menu responsive */
+/* menu responsive hamburguesa */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
 });
 
+/* fincion para que al hacer scroll el navbar tenga color */
 $(window).on('scroll', function() {
     if ($(window).scrollTop()) {
         $('nav').addClass('red');
@@ -20,3 +22,8 @@ $(window).on('scroll', function() {
         $('nav ul li a').removeClass('color-grey');
     };
 });
+
+/* galeria popup */
+imgPopup.forEach(popup => popup.addEventListener('click', () => {
+    popup.classList.toggle('popup');
+}));
