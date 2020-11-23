@@ -3,16 +3,15 @@
     @extend .img-hero;
 }
 
-.img-hero-burga {
-    background: url(../img/burga.webp) no-repeat 75% 100% / cover;
-    @extend .img-hero;
-    background-blend-mode: none;
-}
-
 .divg {
     background-image: $color-red-gradient;
     height: 105vh;
     width: 100%;
+    .img-hero-burga {
+        background: url(../img/burga.webp) no-repeat 75% 100% / cover;
+        @extend .img-hero;
+        background-blend-mode: none;
+    }
 }
 
 .img-hero {
