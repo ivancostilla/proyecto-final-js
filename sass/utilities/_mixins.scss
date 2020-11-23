@@ -2,3 +2,12 @@
     height: $height;
     width: $width;
 }
+
+
+/* mixin para flex */
+
+@mixin flex($display, $align-items, $justify-content) {
+    display: $display;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}

@@ -9,7 +9,7 @@
     position: fixed;
     text-align: center;
     top: 0;
-    transition: all 1s ease;
+    transition: all 1s ease-out;
     width: 100%;
     z-index: 1000;
     background-color: $color-red;
@@ -79,7 +79,7 @@
         transition: all .3s ease 0s;
         &:hover {
             transform: scale(1.2);
-            color: $color-light-yellow;
+            color: $color-grey;
         }
     }
     @media screen and(min-width: 53.125rem) {
@@ -120,11 +120,14 @@
             transform: translateX(6.25rem);
         }
         .logo {
-            color: $color-black;
+            color: $color-light-yellow;
         }
         .navbar__links {
             .navbar__li .navbar__a {
-                color: $color-black;
+                color: $color-light-yellow;
+                &:hover {
+                    color: $color-grey;
+                }
                 &.color-grey {
                     color: $color-grey;
                     transition: all .5s ease;
@@ -136,6 +139,9 @@
         }
         .color-grey {
             color: $color-grey;
+            &:hover {
+                color: $color-light-yellow
+            }
         }
     }
 }

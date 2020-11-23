@@ -1,0 +1,10 @@
+.head__img-hero {
+    background: url(../img/hero1.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%);
+    background-attachment: fixed;
+    background-blend-mode: color-burn;
+    @include tamaños(40.850rem, 100%);
+    @include flex(flex, center, center);
+    overflow: hidden;
+    position: relative;
+    transition: all 1s ease;
+}

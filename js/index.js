@@ -28,3 +28,16 @@ imgPopup.forEach(popup => {
         popup.classList.toggle('popup');
     });
 });
+
+function changeBg() {
+    const images = [` url(../img/hero1.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
+        ` url(../img/hero2.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
+        ` url(../img/hero3.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
+        ` url(../img/hero4.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
+        ` url(../img/hero5.webp) no-repeat 75% 75% / cover, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`
+    ]
+    const head = document.querySelector(".head__img-hero");
+    const bg = images[Math.floor(Math.random() * images.length)];
+    head.style.background = bg;
+};
+setInterval(changeBg, 4000);
