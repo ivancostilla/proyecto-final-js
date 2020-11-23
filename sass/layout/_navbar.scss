@@ -10,7 +10,7 @@
     text-align: center;
     top: 0;
     background-color: $color-red;
-    transition: background-color .5s ease, height .5s ease;
+    transition: background-color .5s ease, height .5s ease, color .4s ease;
     width: 100%;
     z-index: 1000;
     .navbar__links {
