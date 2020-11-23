@@ -1,7 +1,6 @@
 const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
-const imgPopup = document.querySelectorAll('galeria__img');
-
+const imgPopup = document.querySelectorAll('.galeria__img');
 /* menu responsive hamburguesa */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
@@ -24,6 +23,8 @@ $(window).on('scroll', function() {
 });
 
 /* galeria popup */
-imgPopup.forEach(popup => popup.addEventListener('click', () => {
-    popup.classList.toggle('popup');
-}));
+imgPopup.forEach(popup => {
+    popup.addEventListener('click', () => {
+        popup.classList.toggle('popup');
+    });
+});
