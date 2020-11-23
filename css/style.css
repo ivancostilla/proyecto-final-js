@@ -6,8 +6,7 @@
 /* letras para fondo claro*/
 /* mixin para flex */
 .head__img-hero {
-  background: url(../img/hero1.webp) no-repeat 75% 75%/cover, linear-gradient(120deg, rgba(219, 61, 122, 0.4) 0%, rgba(225, 14, 14, 0.4) 100%);
-  background-attachment: fixed;
+  background: url(../img/hero1.webp) no-repeat 75% 75%/cover fixed, linear-gradient(120deg, rgba(219, 61, 122, 0.4) 0%, rgba(225, 14, 14, 0.4) 100%);
   background-blend-mode: color-burn;
   height: 40.85rem;
   width: 100%;
@@ -44,10 +43,10 @@ body {
   position: fixed;
   text-align: center;
   top: 0;
-  transition: all 1s ease-out;
+  background-color: #f00000;
+  transition: background-color .5s ease, height .5s ease;
   width: 100%;
-  z-index: 1000;
-  background-color: #f00000; }
+  z-index: 1000; }
   .navbar .navbar__links {
     display: none; }
   .navbar.open {
@@ -102,11 +101,14 @@ body {
       color: #e6e9e2; }
   @media screen and (min-width: 53.125rem) {
     .navbar {
-      background-color: transparent; }
+      background-color: transparent;
+      height: 5rem;
+      font-size: 1.25rem; }
       .navbar.open {
         flex-direction: row;
         height: 3.75rem;
-        justify-content: space-between; }
+        justify-content: space-between;
+        position: fixed; }
         .navbar.open .navbar__links {
           display: inline-block; }
         .navbar.open .li1 li:nth-child(1) {
@@ -116,7 +118,8 @@ body {
         .navbar.open .navbar__links li {
           display: inline-block; }
       .navbar.red {
-        background-color: #f00000;
+        height: 3.75rem;
+        background-image: linear-gradient(120deg, #f00000 0%, #c20a0a 100%);
         box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2); }
       .navbar .navbar__links {
         display: block; }
@@ -187,3 +190,31 @@ body {
 
 /*fin estilos seccion gallery */
 /*fin estilos seccion gallery */
+.footer {
+  height: 6rem;
+  background-image: linear-gradient(120deg, #f00000 0%, #c20a0a 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  color: #e6e9e2; }
+  @media screen and (min-width: 22.5rem) {
+    .footer {
+      height: 4rem; } }
+  @media screen and (min-width: 38.125rem) {
+    .footer {
+      height: 2.75rem; } }
+  .footer .footer__media,
+  .footer .footer__info {
+    margin: 0 .625rem; }
+  .footer .footer__a {
+    text-decoration: none;
+    color: #e6e9e2;
+    margin-left: .6125rem;
+    transition: all .5s ease;
+    cursor: pointer; }
+    .footer .footer__a:hover {
+      color: #fbeb04; }
+    .footer .footer__a footer svg {
+      transform: translateY(1.875rem); }

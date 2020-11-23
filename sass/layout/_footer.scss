@@ -1,0 +1,33 @@
+.footer {
+    height: 6rem;
+    background-image: $color-red-gradient;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    color: $color-grey;
+    @media screen and (min-width: 22.5rem) {
+        height: 4rem;
+    }
+    @media screen and (min-width: 38.125rem) {
+        height: 2.75rem;
+    }
+    .footer__media,
+    .footer__info {
+        margin: 0 .625rem;
+    }
+    .footer__a {
+        text-decoration: none;
+        color: $color-grey;
+        margin-left: .6125rem;
+        transition: all .5s ease;
+        cursor: pointer;
+        &:hover {
+            color: $color-light-yellow;
+        }
+        footer svg {
+            transform: translateY(1.875rem);
+        }
+    }
+}

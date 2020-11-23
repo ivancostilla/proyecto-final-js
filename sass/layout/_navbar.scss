@@ -9,10 +9,10 @@
     position: fixed;
     text-align: center;
     top: 0;
-    transition: all 1s ease-out;
+    background-color: $color-red;
+    transition: background-color .5s ease, height .5s ease;
     width: 100%;
     z-index: 1000;
-    background-color: $color-red;
     .navbar__links {
         display: none;
     }
@@ -84,10 +84,13 @@
     }
     @media screen and(min-width: 53.125rem) {
         background-color: transparent;
+        height: 5rem;
+        font-size: 1.25rem;
         &.open {
             flex-direction: row;
             height: 3.75rem;
             justify-content: space-between;
+            position: fixed;
             .navbar__links {
                 display: inline-block;
             }
@@ -104,7 +107,8 @@
             }
         }
         &.red {
-            background-color: $color-red;
+            height: 3.75rem;
+            background-image: $color-red-gradient;
             box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .2);
         }
         .navbar__links {
