@@ -1,6 +1,7 @@
 const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll('.galeria__img');
+const imgCard = document.querySelectorAll('.card__img');
 /* menu responsive hamburguesa */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
@@ -29,7 +30,15 @@ imgPopup.forEach(popup => {
     });
 });
 
-function changeBg() {
+/* imagenes en las cards */
+imgCard.forEach(popup => {
+    popup.addEventListener('click', () => {
+        popup.classList.toggle('popup');
+    });
+});
+
+function cambiarBg() {
+    /* si solo pongo la url, no me toma la propiedad bg attchment en css, por eso coloco todo */
     const images = [` url(../img/hero1.webp) no-repeat 75% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
         ` url(../img/hero2.webp) no-repeat 75% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
         ` url(../img/hero3.webp) no-repeat 75% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
@@ -40,4 +49,4 @@ function changeBg() {
     const bg = images[Math.floor(Math.random() * images.length)];
     head.style.background = bg;
 };
-setInterval(changeBg, 4000);
+setInterval(cambiarBg, 4000);

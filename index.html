@@ -9,6 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous">
     </script>
     <title>La Burguería inc</title>
@@ -23,23 +25,23 @@
                 <div class="navbar__line"></div>
             </div>
             <ul class="navbar__links li1">
-                <li class="navbar__li"><a class="navbar__a" href="#">Armá tu Combo</a></li>
-                <li class="navbar__li"><a class="navbar__a" href="#">Promociones</a></li>
+                <li class="navbar__li"><a class="navbar__a" href="#combo">Armá tu Combo</a></li>
+                <li class="navbar__li"><a class="navbar__a" href="#lasBurgas">Las Burgas</a></li>
             </ul>
-            <a href="#" class="logo">La Burgueria.inc</a>
+            <a href="#home" class="logo">La Burgueria.inc</a>
             <ul class="navbar__links li2">
-                <li class="navbar__li"><a class="navbar__a" href="#">Postres</a></li>
-                <li class="navbar__li"><a class="navbar__a" href="#">Contactanos</a></li>
+                <li class="navbar__li"><a class="navbar__a" href="#extras">Extras</a></li>
+                <li class="navbar__li"><a class="navbar__a" href="#contactanos">Contactanos</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section>
+        <section id="home">
             <article>
                 <div class="head__img-hero"></div>
             </article>
         </section>
-        <section>
+        <section class="" id="combo">
             <!-- aqui irá la vntana con las funciones para armar el combo de hamburguesa -->
             <p>ventana principal</p>
             <h1>Armá tu combo</h1>
@@ -51,22 +53,46 @@
                 <h2>Promocion</h2>
                 <div>Temporizador</div>
             </article>
-        </section>
-        <section>
             <article>
                 <h2>Promocion</h2>
                 <div>temporizador</div>
             </article>
         </section>
-        <section>
-            <article class="divg">
-                <div class="img-hero-burga"></div>
+        <section class="burgas" id="lasBurgas">
+            <article>
+                <h2 class="neon">- Las Burgas -</h2>
+                <p>aca van a ir card pero con slider incluido je</p>
             </article>
         </section>
         <section>
-            <article>
-                <p>seccion con postres</p>
-                <p>y boton de "agregar al carrito"</p>
+            <article class="container-hero-burga">
+                <div class="container-hero-burga__img"></div>
+            </article>
+        </section>
+        <section id="extras">
+            <article class="extras">
+                <h2 class="neon">- Extras -</h2>
+                <div class="card__container">
+                    <div class="card">
+                        <img class="card__img" src="img/papas.webp" alt="">
+                        <h3 class="card__h3">papas fritas</h3>
+                        <p class="card__content">Papas fritas con salsa especial de la casa.<span class="card__precio">$00.00</span></p>
+                        <button class="card__button">Agregar al carrito</button>
+                    </div>
+                    <div class="card">
+                        <img class="card__img" src="img/nachos.webp" alt="">
+                        <h3 class="card__h3">nachos</h3>
+                        <p class="card__content">Nachos con salsa acida, barbacoa, cheddar y verdeo.<span class="card__precio">$00.00</span></p>
+                        <button class="card__button">Agregar al carrito</button>
+                    </div>
+                    <div class="card">
+                        <img class="card__img" src="img/choclo.webp" alt="">
+                        <h3 class="card__h3">choclo frito</h3>
+                        <p class="card__content">Choclo frito con salsa especial de la casa.<span class="card__precio">$00.00</span></p>
+                        <button class="card__button">Agregar al carrito</button>
+                    </div>
+
+                </div>
             </article>
         </section>
         <section class="galeria">
@@ -84,13 +110,13 @@
             </aside>
         </section>
     </main>
-    <footer class="footer">
+    <footer class="footer" id="contactanos">
         <div class="footer__info">
             <a class="footer__a" href="#">Contáctanos</a>
             <a class="footer__a" href="#">Promociones</a>
             <a class="footer__a" href="#">Términos y Condiciones</a>
         </div>
-        <svg style="cursor:pointer" enable-background="new 0 0 507.742 507.742" height="35" viewBox="0 0 507.742 507.742" width="35" fill=" #e6e9e2" xmlns="http://www.w3.org/2000/svg"><g><path d="m507.742 244.768c0-53.737-26.931-104-75.831-141.529-47.723-36.625-110.951-56.794-178.04-56.794s-130.317 20.17-178.04 56.794c-48.9 37.529-75.831 87.792-75.831 141.529v15h32.173c-6.597 10.208-10.445 22.35-10.445 35.382s3.848 25.175 10.445 35.383h-32.173v65.383c0 36.052 29.33 65.382 65.382 65.382h376.978c36.052 0 65.382-29.331 65.382-65.382v-65.383h-32.174c6.597-10.208 10.445-22.351 10.445-35.383s-3.848-25.175-10.445-35.382h32.173v-15zm-223.123 85.765 70.766-70.765h47.574l-70.766 70.765zm-42.426 0h-47.574l70.766-70.765h47.574zm-90 0h-47.574l70.766-70.765h47.574zm-84.301-5.699c-9.718-6.314-16.163-17.257-16.163-29.684 0-19.51 15.873-35.382 35.383-35.382h45.848zm409.85 71.082c0 19.51-15.872 35.382-35.382 35.382h-376.978c-19.51 0-35.382-15.873-35.382-35.382v-35.383h447.742zm-103.123-65.383 65.131-65.131c9.773 6.303 16.263 17.279 16.263 29.748 0 19.51-15.873 35.383-35.383 35.383zm-343.738-100.765c10.123-85.816 106.268-153.323 222.99-153.323s212.867 67.507 222.99 153.323z"/></g></svg>
+        <a href="#home" class="footer__a-svg"><svg style="cursor:pointer" enable-background="new 0 0 507.742 507.742" height="35" viewBox="0 0 507.742 507.742" width="35" fill=" #e6e9e2" xmlns="http://www.w3.org/2000/svg"><g><path d="m507.742 244.768c0-53.737-26.931-104-75.831-141.529-47.723-36.625-110.951-56.794-178.04-56.794s-130.317 20.17-178.04 56.794c-48.9 37.529-75.831 87.792-75.831 141.529v15h32.173c-6.597 10.208-10.445 22.35-10.445 35.382s3.848 25.175 10.445 35.383h-32.173v65.383c0 36.052 29.33 65.382 65.382 65.382h376.978c36.052 0 65.382-29.331 65.382-65.382v-65.383h-32.174c6.597-10.208 10.445-22.351 10.445-35.383s-3.848-25.175-10.445-35.382h32.173v-15zm-223.123 85.765 70.766-70.765h47.574l-70.766 70.765zm-42.426 0h-47.574l70.766-70.765h47.574zm-90 0h-47.574l70.766-70.765h47.574zm-84.301-5.699c-9.718-6.314-16.163-17.257-16.163-29.684 0-19.51 15.873-35.382 35.383-35.382h45.848zm409.85 71.082c0 19.51-15.872 35.382-35.382 35.382h-376.978c-19.51 0-35.382-15.873-35.382-35.382v-35.383h447.742zm-103.123-65.383 65.131-65.131c9.773 6.303 16.263 17.279 16.263 29.748 0 19.51-15.873 35.383-35.383 35.383zm-343.738-100.765c10.123-85.816 106.268-153.323 222.99-153.323s212.867 67.507 222.99 153.323z"/></g></svg></a>
         <div class="footer__media">
             <!-- aqui van las redes sociales -->
             <a class="footer__a" href="#">Facebook</a>

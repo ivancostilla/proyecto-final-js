@@ -1,0 +1,17 @@
+.neon {
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    font-size: 3rem;
+    transition: all .4s ease;
+    animation: neon .8s ease-out infinite backwards;
+    display: block;
+}
+
+@keyframes neon {
+    0% {
+        text-shadow: 0 0 3px $color-grey, 0 0 3px hsl(210, 100%, 40%);
+    }
+    100% {
+        text-shadow: 0 0 3px $color-grey, 0 0 4px hsl(210, 100%, 30%), 0 0 6px hsl(210, 100%, 30%), 0 0 10px hsl(210, 100%, 40%), 0 0 15px hsl(210, 100%, 30%), 0 0 25px hsl(210, 100%, 30%);
+    }
+}
