@@ -10,7 +10,6 @@
     .container-hero-burga__img {
         background: url(../img/burga.webp) no-repeat 75% 100% / cover;
         @extend .img-hero;
-        background-blend-mode: none;
     }
 }
 

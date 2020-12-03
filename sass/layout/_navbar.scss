@@ -13,6 +13,7 @@
     transition: background-color .5s ease, height .5s ease, color .4s ease;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .4);
     .navbar__links {
         display: none;
     }
@@ -86,6 +87,7 @@
         background-color: transparent;
         height: 5rem;
         font-size: 1.25rem;
+        box-shadow: none;
         &.open {
             flex-direction: row;
             height: 3.75rem;
@@ -109,7 +111,7 @@
         &.red {
             height: 3.75rem;
             background-image: $color-red-gradient;
-            box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .2);
+            box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .4);
         }
         .navbar__links {
             display: block;

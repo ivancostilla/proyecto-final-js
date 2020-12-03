@@ -16,7 +16,8 @@
         }
     }
     
-    .card__container {
+    .card__container-extras,
+    .card__container-burgas {
         display: flex;
         justify-content: space-evenly;
         margin: 2rem;
@@ -29,7 +30,7 @@
         border: 1px solid #fff;
         display: inline-flex;
         border-radius: .3125rem;
-        box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .2);
+        box-shadow: .125rem .125rem .3125rem .0625rem rgba(0, 0, 0, .4);
         flex-wrap: wrap;
         transition: all .5s ease;
         text-align: center;
