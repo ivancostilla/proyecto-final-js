@@ -5,6 +5,8 @@
     grid-auto-rows: 21.875rem;
     /* hay que darle un height a la imagen para que funcione */
     padding: .125rem 0;
+    background-image: none;
+    background-color: $color-grey;
     .galeria__img {
         object-fit: cover;
         /* es para que no se distorsionen las imagenes */

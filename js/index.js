@@ -147,3 +147,8 @@ $(".owl-carousel").owlCarousel({
     }
 
 })
+const ventanaModal = document.querySelector(".contenedor-modal__circle");
+ventanaModal.addEventListener("click", () => {
+    ventanaModal.classList.toggle('contenedor-modal__open');
+    ventanaModal.classList.toggle('contenedor-modal__close');
+});
