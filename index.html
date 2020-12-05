@@ -5,14 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- links css: -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
 
+    <!-- Scripts: -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous">
-    </script>
+
     <title>La Burguería inc</title>
 </head>
 
@@ -57,18 +62,16 @@
                 <h2>Promocion</h2>
                 <div>temporizador</div>
             </article>
+            <!-- Slider main container -->
+
         </section>
         <section class="burgas" id="lasBurgas">
             <article>
                 <h2 class="neon">- Las Burgas -</h2>
-                <p>aca van a ir card pero con slider incluido je</p>
-                <div class="card__container-burgas">
-                    <!--               <div class="card">
-                        <img class="card__img" src="img/burga.webp" alt="">
-                        <h3 class="card__h3">${nombre}</h3>
-                        <p class="card__content">${descripcion}<span class="card__precio">${precio}</span></p>
-                        <button class="card__button">Agregar al carrito</button>
-                    </div> -->
+
+                <!-- <div class="card__container-burgas"></div> -->
+
+                <div class="slider card__container-burgas owl-carousel">
                 </div>
             </article>
         </section>
@@ -112,8 +115,9 @@
             <a class="footer__a" href="#">Twitter</a>
         </div>
     </footer>
-    <script src="js/index.js">
-    </script>
+
+    <!-- Scripts -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>

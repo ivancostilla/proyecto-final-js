@@ -2,12 +2,13 @@ const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll(".galeria__img");
 
+
 /* menu responsive hamburguesa */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
 });
 
-/* fincion para que al hacer scroll el navbar tenga color */
+/* funcion para que al hacer scroll el navbar tenga color */
 $(window).on('scroll', function() {
     if ($(window).scrollTop()) {
         $('nav').addClass('red');
@@ -51,7 +52,7 @@ function cambiarBg() {
 setInterval(cambiarBg, 4000);
 
 /* funcion para agregar la info a las cards dinamicamente */
-function cardsInfo(img, nombre, descripcion) {
+function cardsInfo(img, nombre, descripcion, id) {
     this.img = `img/${img}.webp`;
     this.nombre = nombre;
     this.descripcion = descripcion;
@@ -59,19 +60,18 @@ function cardsInfo(img, nombre, descripcion) {
     let precio = Math.round(Math.random() * 700 + 100);
     this.precio = `$${precio}`;
     /* asigno id random por ahora, para pruebas, esas id van a servir para agrgar el producto al carrito */
-    let id = Math.round(Math.random() * 1000);
     this.id = `${id}`;
 };
 /* creamos el contenido de las cards: */
-const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.");
-const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.");
-const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.");
-const burga1 = new cardsInfo("burga", "Burga 1", "burga con salsa especial de la casa.");
-const burga2 = new cardsInfo("burga", "Burga 2", "burga con salsa especial de la casa.");
-const burga3 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.");
-const burga4 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.");
-const burga5 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.");
-const burga6 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.");
+const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.", "7");
+const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.", "8");
+const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.", "9");
+const burga1 = new cardsInfo("burga", "Burga 1", "burga con salsa especial de la casa.", "1");
+const burga2 = new cardsInfo("burga", "Burga 2", "burga con salsa especial de la casa.", "2");
+const burga3 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.", "3");
+const burga4 = new cardsInfo("burga", "Burga 4", "burga con salsa especial de la casa.", "4");
+const burga5 = new cardsInfo("burga", "Burga 5", "burga con salsa especial de la casa.", "5");
+const burga6 = new cardsInfo("burga", "Burga 6", "burga con salsa especial de la casa.", "6");
 
 
 /* guardamos el contenido de cada card en un array */
@@ -103,18 +103,17 @@ for (i = 0; i < cardsContainer.length; i++) {
         let precio = card["precio"];
         let id = card["id"];
         htmlCode += `
-<div class="card">
-<img class="card__img" src="${img}" alt="">
-<h3 class="card__h3">${nombre}</h3>
-<p class="card__content">${descripcion}<span class="card__precio">${precio}</span></p>
-<button class="card__button" id="${id}">Agregar al carrito</button>
-</div>
+                <div class="card">
+                    <img class="card__img" src="${img}" alt="">
+                    <h3 class="card__h3">${nombre}</h3>
+                    <p class="card__content">${descripcion}<span class="card__precio">${precio}</span></p>
+                    <button class="card__button" id="${id}">Agregar al carrito</button>
+                </div>
 `;
     };
     // Asignar HTML a contenedor
     containers[i].innerHTML = htmlCode;
 }
-
 
 /* agregando la clase popup a las img de las cards, 
  la coloco aqui xq tengo que invocar la funcion despues de haber
@@ -122,3 +121,29 @@ for (i = 0; i < cardsContainer.length; i++) {
 const imgCard = document.querySelectorAll(".card__img");
 /* si pongo la variable arriba de todo, no me toma el evento */
 asignarPopup(imgCard);
+
+$(".owl-carousel").owlCarousel({
+    loop: false,
+    center: false,
+    rewind: true,
+    mergeFit: false,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
+    responsiveClass: true,
+    responsive: {
+        0: {
+            items: 1,
+            nav: false
+        },
+        800: {
+            items: 2,
+            nav: false
+        },
+        1000: {
+            items: 3,
+            nav: false
+        }
+    }
+
+})

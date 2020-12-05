@@ -1,0 +1,12 @@
+.slider {
+    max-width: 1150px;
+    overflow: hidden;
+    display: flex;
+    .card {
+        margin: 0 50px;
+    }
+}
+
+.slider.card__container-burgas.owl-carousel.owl-loaded.owl-drag {
+    margin: 0 auto;
+}
