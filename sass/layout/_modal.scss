@@ -1,20 +1,17 @@
 .contenedor-modal {
-    width: 100%;
     max-width: 600px;
-    height: 100%;
-    width: 100%;
+    @include tamaños(100%, 100%);
     transition: max-width 0.3s ease-in-out;
     @media (min-width: 42.5rem) {
         max-width: 100%;
     }
     .contenedor-modal__circle {
         position: fixed;
-        background: url(https://source.unsplash.com/random/400x800), linear-gradient(45deg, hsl(250, 90%, 61%), hsl(271, 65%, 60%));
+        background: url(../img/burga.webp), linear-gradient(45deg, $color-light-yellow, hsl(27, 95%, 50%));
         background-size: cover;
         background-repeat: no-repeat;
         background-blend-mode: overlay;
-        width: 3.125rem;
-        height: 3.125rem;
+        @include tamaños(3.125rem, 3.125rem);
         border-radius: 6.25rem;
         display: flex;
         flex-direction: column;
@@ -36,22 +33,22 @@
                 color: #333;
                 text-align: center;
                 .contenedor-modal__h2 {
-                    color: darken(hsl(250, 73%, 64%), 5%);
-                    text-transform: uppercase;
+                    color: darken($color-blue, 2%);
+                    font-size: 1.75rem;
                 }
             }
         }
         &.contenedor-modal__open {
-            top: 1.875rem;
-            left: 1.875rem;
-            width: calc(100% - 3.75rem);
-            height: calc(100% - 3.75rem);
             border-radius: .3125rem;
-            transition: width 0.7s cubic-bezier(.77, .07, .53, 1), border-radius 0.5s cubic-bezier(.05, .72, .42, 1), height 0.7s cubic-bezier(.77, .07, .53, 1), top 0.8s cubic-bezier(.05, .72, .42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
             box-shadow: 0 0 0 70vmax rgba(0, 0, 0, 0.3);
+            left: 1.875rem;
+            top: 1.875rem;
+            @include tamaños(calc(100% - 3.75rem), calc(100% - 3.75rem));
+            transition: width 0.7s cubic-bezier(.77, .07, .53, 1), border-radius 0.5s cubic-bezier(.05, .72, .42, 1), height 0.7s cubic-bezier(.77, .07, .53, 1), top 0.8s cubic-bezier(.05, .72, .42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
+            text-align: center;
             z-index: 2000;
             .contenedor-modal__article {
-                height: 60%;
+                height: 80%;
                 transition: all 1.4s cubic-bezier(.77, .07, .53, 1);
                 .contenedor-modal__contenido {
                     opacity: 1;

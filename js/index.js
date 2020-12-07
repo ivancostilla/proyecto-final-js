@@ -1,6 +1,7 @@
 const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll(".galeria__img");
+const ventanaModal = document.querySelector(".contenedor-modal__circle");
 
 
 /* menu responsive hamburguesa */
@@ -26,6 +27,8 @@ $(window).on('scroll', function() {
 
 /* funcion para asignar la clase popup
  a distintas variables con distintos elementos html */
+/* esta funcion la creo xq quiero darle l mismo stilo poup a la galeria de img
+y a las img de las cards */
 const asignarPopup = (elem) => {
         (elem).forEach(popup => {
             popup.addEventListener('click', () => {
@@ -51,7 +54,8 @@ function cambiarBg() {
 };
 setInterval(cambiarBg, 4000);
 
-/* funcion para agregar la info a las cards dinamicamente */
+/* Creando cards dinamicamente: */
+/* 1- funcion para agregar la info a las cards dinamicamente */
 function cardsInfo(img, nombre, descripcion, id) {
     this.img = `img/${img}.webp`;
     this.nombre = nombre;
@@ -62,38 +66,35 @@ function cardsInfo(img, nombre, descripcion, id) {
     /* asigno id random por ahora, para pruebas, esas id van a servir para agrgar el producto al carrito */
     this.id = `${id}`;
 };
-/* creamos el contenido de las cards: */
+/* 2- creamos el contenido de las cards: */
 const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.", "7");
 const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.", "8");
 const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.", "9");
-const burga1 = new cardsInfo("burga", "Burga 1", "burga con salsa especial de la casa.", "1");
-const burga2 = new cardsInfo("burga", "Burga 2", "burga con salsa especial de la casa.", "2");
-const burga3 = new cardsInfo("burga", "Burga 3", "burga con salsa especial de la casa.", "3");
-const burga4 = new cardsInfo("burga", "Burga 4", "burga con salsa especial de la casa.", "4");
-const burga5 = new cardsInfo("burga", "Burga 5", "burga con salsa especial de la casa.", "5");
-const burga6 = new cardsInfo("burga", "Burga 6", "burga con salsa especial de la casa.", "6");
+const burga1 = new cardsInfo("burger1", "Burga Doble", "Burga con medallón doble, panceta y cheddar.", "1");
+const burga2 = new cardsInfo("burger2", "La Criolla", "Burga con cebolla caramelizada, queso criollo y lechuga.", "2");
+const burga3 = new cardsInfo("burger3", "La Completa", "burga con ensalada, aros e cebolla y papas fritas.", "3");
+const burga4 = new cardsInfo("burger4", "La Clásica", "burga con tomate, lechuga y cheddar.", "4");
+const burga5 = new cardsInfo("burger5", "A Caballo", "burga con tomate, lechuga y huevo frito.", "5");
+const burga6 = new cardsInfo("burger6", "La Burga", "burga con salsa especial de la casa, panceta, tomate, lechuga y cheddar.", "6");
 
 
-/* guardamos el contenido de cada card en un array */
+/* 3- guardamos el contenido de cada card en un array */
 let cardsBurgasArray = [burga1, burga2, burga3, burga4, burga5, burga6];
 let cardsExtrasArray = [papasFritas, nachos, chocloFrito];
 
-/* guardamos en otro array los array anteriores por si tenemos mas secciones html
+/* 4- guardamos en otro array los array anteriores por si tenemos mas secciones html
 que contengan cards: */
 let cardsContainer = [cardsBurgasArray, cardsExtrasArray];
 
-/* guardamos en variables los contenedores padre de las cards: */
+/* 5- guardamos en variables los contenedores html padre de las cards: */
 const cardBurgas = document.querySelector(".card__container-burgas");
 const cardExtras = document.querySelector(".card__container-extras");
 
-// Crear un arreglo de contenedores para asociar con las cards
+// 6- Creo un arreglo de los contenedores padres para asociar con las cards,
 const containers = [cardBurgas, cardExtras];
 
-/* hasta acá funciona todo bien, el problema es cuando entro al for, se me agregan las todas las cards a las 2 secciones, lo que yo quiero es que las cards guardadas en cardsBurgasArray se guarden en la seccion cardBurgas y las ars guaradas rn arsxtrasArray se guarden en la seccion cardExtras
-puedo hacerlo por separado pero seria repetir codigo.. aiuda! */
-/* creamos dinamicamente las cards: */
+/* 7- creamos dinamicamente las cards: */
 for (i = 0; i < cardsContainer.length; i++) {
-    // Inicializar código dentro del ciclo
     let htmlCode = "";
     for (cards in cardsContainer[i]) {
         let card = cardsContainer[i][cards];
@@ -111,7 +112,7 @@ for (i = 0; i < cardsContainer.length; i++) {
                 </div>
 `;
     };
-    // Asignar HTML a contenedor
+    //8- Se asignan las cards on istinta info.. a los distintos contnedores.
     containers[i].innerHTML = htmlCode;
 }
 
@@ -122,6 +123,7 @@ const imgCard = document.querySelectorAll(".card__img");
 /* si pongo la variable arriba de todo, no me toma el evento */
 asignarPopup(imgCard);
 
+/* carrousel e la sccion burgas:(usano una libreria) */
 $(".owl-carousel").owlCarousel({
     loop: false,
     center: false,
@@ -147,7 +149,8 @@ $(".owl-carousel").owlCarousel({
     }
 
 })
-const ventanaModal = document.querySelector(".contenedor-modal__circle");
+
+/* ventana modal: */
 ventanaModal.addEventListener("click", () => {
     ventanaModal.classList.toggle('contenedor-modal__open');
     ventanaModal.classList.toggle('contenedor-modal__close');

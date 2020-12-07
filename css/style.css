@@ -315,7 +315,7 @@ div.owl-item > div > img.popup {
   left: 2.5%;
   height: calc(100% - 100px);
   width: 95%;
-  z-index: 100;
+  z-index: 950;
   filter: grayscale(0);
   box-shadow: -1px 10px 27px 50px rgba(0, 0, 0, 0.438);
   border-radius: 5px;
@@ -326,7 +326,6 @@ div.owl-item > div > img.popup {
       object-fit: cover; } }
 
 .contenedor-modal {
-  width: 100%;
   max-width: 600px;
   height: 100%;
   width: 100%;
@@ -336,12 +335,12 @@ div.owl-item > div > img.popup {
       max-width: 100%; } }
   .contenedor-modal .contenedor-modal__circle {
     position: fixed;
-    background: url(https://source.unsplash.com/random/400x800), linear-gradient(45deg, #6042f5, #9b57db);
+    background: url(../img/burga.webp), linear-gradient(45deg, #fbeb04, #f97306);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
-    width: 3.125rem;
     height: 3.125rem;
+    width: 3.125rem;
     border-radius: 6.25rem;
     display: flex;
     flex-direction: column;
@@ -363,19 +362,20 @@ div.owl-item > div > img.popup {
         color: #333;
         text-align: center; }
         .contenedor-modal .contenedor-modal__circle .contenedor-modal__article .contenedor-modal__contenido .contenedor-modal__h2 {
-          color: #644ae3;
-          text-transform: uppercase; }
+          color: #06186f;
+          font-size: 1.75rem; }
     .contenedor-modal .contenedor-modal__circle.contenedor-modal__open {
-      top: 1.875rem;
-      left: 1.875rem;
-      width: calc(100% - 3.75rem);
-      height: calc(100% - 3.75rem);
       border-radius: .3125rem;
-      transition: width 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), border-radius 0.5s cubic-bezier(0.05, 0.72, 0.42, 1), height 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), top 0.8s cubic-bezier(0.05, 0.72, 0.42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
       box-shadow: 0 0 0 70vmax rgba(0, 0, 0, 0.3);
+      left: 1.875rem;
+      top: 1.875rem;
+      height: calc(100% - 3.75rem);
+      width: calc(100% - 3.75rem);
+      transition: width 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), border-radius 0.5s cubic-bezier(0.05, 0.72, 0.42, 1), height 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), top 0.8s cubic-bezier(0.05, 0.72, 0.42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
+      text-align: center;
       z-index: 2000; }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__article {
-        height: 60%;
+        height: 80%;
         transition: all 1.4s cubic-bezier(0.77, 0.07, 0.53, 1); }
         .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__article .contenedor-modal__contenido {
           opacity: 1;
