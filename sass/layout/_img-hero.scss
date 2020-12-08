@@ -1,5 +1,5 @@
 .head__img-hero {
-    background: url(../img/hero1.webp) no-repeat 75% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%);
+    background: url(../img/hero1.webp) no-repeat 50% 100% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%);
     @extend .img-hero;
 }
 
@@ -8,7 +8,7 @@
     height: 100vh;
     width: 100%;
     .container-hero-burga__img {
-        background: url(../img/burga.webp) no-repeat 75% 100% / cover, ;
+        background: url(../img/burga.webp) no-repeat 50% 100% / cover, ;
         @extend .img-hero;
     }
 }

@@ -7,14 +7,14 @@
 /* letras para fondo claro*/
 /* mixin para flex */
 .head__img-hero {
-  background: url(../img/hero1.webp) no-repeat 75% 75%/cover fixed, linear-gradient(120deg, rgba(219, 61, 122, 0.4) 0%, rgba(225, 14, 14, 0.4) 100%); }
+  background: url(../img/hero1.webp) no-repeat 50% 100%/cover fixed, linear-gradient(120deg, rgba(219, 61, 122, 0.4) 0%, rgba(225, 14, 14, 0.4) 100%); }
 
 .container-hero-burga {
   background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%);
   height: 100vh;
   width: 100%; }
   .container-hero-burga .container-hero-burga__img {
-    background: url(../img/burga.webp) no-repeat 75% 100%/cover; }
+    background: url(../img/burga.webp) no-repeat 50% 100%/cover; }
 
 .img-hero, .head__img-hero, .container-hero-burga .container-hero-burga__img {
   background-blend-mode: color-burn;
