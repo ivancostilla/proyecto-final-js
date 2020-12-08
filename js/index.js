@@ -138,7 +138,7 @@ $(".owl-carousel").owlCarousel({
     rewind: true,
     mergeFit: false,
     autoplay: true,
-    autoplayTimeout: 4000,
+    autoplayTimeout: 10000,
     autoplayHoverPause: true,
     responsiveClass: true,
     responsive: {

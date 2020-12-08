@@ -2,10 +2,11 @@
 
 $color-red: hsl(0, 100%, 47%);
 
-/* color grediente */
+/* color gradiente */
 
 $color-red-gradient: linear-gradient(90deg, hsl(0, 100%, 47%) 0%, hsl(0, 90%, 40%) 100%);
 $color-yellow-gradient:linear-gradient(45deg, hsl(56, 100%, 46%) 0%, hsl(56, 97%, 51%) 37%, hsl(56, 76%, 66%) 55%);
+$color-grey-gradient: linear-gradient(90deg, hsl(80, 14%, 80%) 0%, hsl(90, 4%, 60%) 100%);
 
 /* letras para fondo oscuro */
 
