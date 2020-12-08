@@ -113,7 +113,7 @@ for (i = 0; i < cardsContainer.length; i++) {
         let id = card["id"];
         htmlCode += `
                 <div class="card">
-                    <img class="card__img" src="${img}" alt="">
+                    <img class="card__img" src="${img}" alt="comida rapida" loading="lazy">
                     <h3 class="card__h3">${nombre}</h3>
                     <p class="card__content">${descripcion}<span class="card__precio">${precio}</span></p>
                     <button class="card__button" id="${id}">Agregar al carrito</button>

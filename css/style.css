@@ -14,7 +14,8 @@
   height: 100vh;
   width: 100%; }
   .container-hero-burga .container-hero-burga__img {
-    background: url(../img/burga.webp) no-repeat 50% 100%/cover; }
+    background: url(../img/burga.webp) no-repeat 50% 100%/cover;
+    margin-bottom: 10px; }
 
 .img-hero, .head__img-hero, .container-hero-burga .container-hero-burga__img {
   background-blend-mode: color-burn;
