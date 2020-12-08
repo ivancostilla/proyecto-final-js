@@ -12,7 +12,8 @@
 .container-hero-burga {
   background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%);
   height: 100vh;
-  width: 100%; }
+  width: 100%;
+  min-height: 700px; }
   .container-hero-burga .container-hero-burga__img {
     background: url(../img/burga.webp) no-repeat 50% 100%/cover; }
 
