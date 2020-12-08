@@ -2,10 +2,17 @@ const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll(".galeria__img");
 const ventanaModal = document.querySelector(".contenedor-modal__circle");
-
-
+const links = navLinks.querySelectorAll(".link");
 
 /* menu responsive hamburguesa */
+
+/* codigo para que al hacer click en un link el navbar se cierre */
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+    });
+});
+/* al hacer click en el icono hamburguesa el menu se abre o se cierra */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
 });
@@ -31,13 +38,13 @@ $(window).on('scroll', function() {
 /* esta funcion la creo xq quiero darle l mismo stilo poup a la galeria de img
 y a las img de las cards */
 const asignarPopup = (elem) => {
-        (elem).forEach(popup => {
-            popup.addEventListener('click', () => {
-                popup.classList.toggle('popup');
-            });
+    (elem).forEach(popup => {
+        popup.addEventListener('click', () => {
+            popup.classList.toggle('popup');
         });
-    }
-    /* galeria popup */
+    });
+};
+/* galeria popup */
 asignarPopup(imgPopup);
 
 /* img de portada dinamica, que cambia cada 4 segundos */
@@ -124,7 +131,7 @@ const imgCard = document.querySelectorAll(".card__img");
 /* si pongo la variable arriba de todo, no me toma el evento */
 asignarPopup(imgCard);
 
-/* carrousel e la sccion burgas:(usano una libreria) */
+/* carrousel de la seccion burgas:(usando una libreria) */
 $(".owl-carousel").owlCarousel({
     loop: false,
     center: false,
