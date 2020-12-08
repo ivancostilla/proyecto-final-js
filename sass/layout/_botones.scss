@@ -1,0 +1,40 @@
+.botones {
+    display: inline;
+    @include tamaños(2.5rem, 5rem);
+    border-radius: 5px;
+    text-decoration: none;
+    border-style: none;
+    border: none;
+    box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+    color: $color-black;
+    background-image: $color-yellow-gradient;
+    background-size: 200% 200%;
+    background-position-x: 100%;
+    background-position-y: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+    position: relative;
+    &:hover {
+        background-position: 0 90%;
+    }
+    span {
+        position: absolute;
+        background-color: #fff;
+        transform: translate(-25%, -25%);
+        pointer-events: none;
+        border-radius: 50%;
+        animation: onda 1s linear infinite;
+    }
+    @keyframes onda {
+        0% {
+            @include tamaños(0, 0);
+            opacity: .5;
+        }
+        100% {
+            @include tamaños(1000.25rem, 1000.25rem);
+            opacity: .2;
+        }
+    }
+}

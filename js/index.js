@@ -4,6 +4,7 @@ const imgPopup = document.querySelectorAll(".galeria__img");
 const ventanaModal = document.querySelector(".contenedor-modal__circle");
 
 
+
 /* menu responsive hamburguesa */
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
@@ -149,6 +150,30 @@ $(".owl-carousel").owlCarousel({
     }
 
 })
+
+/* efecto botones al hacer click: */
+const boton = document.querySelectorAll(".botones");
+const botonCards = document.querySelectorAll(".card__button");
+
+const botonEffect = (bton) => {
+    bton.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
+
+            let ondas = document.createElement("span");
+            ondas.style.left = x + "px";
+            ondas.style.top = y + "px";
+            this.appendChild(ondas);
+
+            setTimeout(() => {
+                ondas.remove()
+            }, 900);
+        });
+    });
+};
+botonEffect(boton);
+botonEffect(botonCards);
 
 /* ventana modal: */
 ventanaModal.addEventListener("click", () => {

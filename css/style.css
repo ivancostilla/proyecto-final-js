@@ -42,6 +42,45 @@ body {
   color: #0f1224;
   cursor: default; }
 
+.botones, .card .card__button {
+  display: inline;
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  border-style: none;
+  border: none;
+  box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-family: 'Lobster', cursive;
+  color: #0f1224;
+  background-image: linear-gradient(45deg, #ebdb00 0%, #fbeb09 37%, #eae166 55%);
+  background-size: 200% 200%;
+  background-position-x: 100%;
+  background-position-y: 0;
+  overflow: hidden;
+  transition: all .5s ease;
+  position: relative; }
+  .botones:hover, .card .card__button:hover {
+    background-position: 0 90%; }
+  .botones span, .card .card__button span {
+    position: absolute;
+    background-color: #fff;
+    transform: translate(-25%, -25%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: onda 1s linear infinite; }
+
+@keyframes onda {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: .5; }
+  100% {
+    height: 1000.25rem;
+    width: 1000.25rem;
+    opacity: .2; } }
+
 .navbar {
   display: flex;
   align-items: center;
@@ -253,25 +292,6 @@ body {
   .card .card__precio {
     display: block;
     margin-top: 5px; }
-  .card .card__button {
-    display: inline;
-    height: 2.5rem;
-    width: 5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    border-style: none;
-    border: none;
-    box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-family: 'Lobster', cursive;
-    color: #0f1224;
-    background-image: linear-gradient(45deg, #ebdb00 0%, #fbeb09 37%, #eae166 55%);
-    background-size: 200% 200%;
-    background-position-x: 100%;
-    background-position-y: 0;
-    transition: all .5s ease; }
-    .card .card__button:hover {
-      background-position: 0 90%; }
 
 /* para que las cards del carrousel no tengan box-shadow: */
 div.owl-item > div > img.popup {

@@ -78,25 +78,7 @@
         margin-top: 5px;
     }
     .card__button {
-        display: inline;
-        height: 2.5rem;
-        width: 5rem;
-        border-radius: 5px;
-        text-decoration: none;
-        border-style: none;
-        border: none;
-        box-shadow: 0 .125rem .3125rem .0625rem rgba(0, 0, 0, .2);
-        cursor: pointer;
-        font-family: 'Lobster', cursive;
-        color: $color-black;
-        background-image: $color-yellow-gradient;
-        background-size: 200% 200%;
-        background-position-x: 100%;
-        background-position-y: 0;
-        transition: all .5s ease;
-        &:hover {
-            background-position: 0 90%;
-        }
+        @extend .botones;
     }
 }
 
