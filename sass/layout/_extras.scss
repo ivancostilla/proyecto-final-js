@@ -82,6 +82,15 @@
     }
 }
 
+.owl-carousel {
+    .card {
+        width: 200px;
+        @media screen and (min-width: 18.75rem) {
+            width: 300px;
+        }
+    }
+}
+
 
 /* para que las cards del carrousel no tengan box-shadow: */
 

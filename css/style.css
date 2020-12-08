@@ -200,14 +200,11 @@ body {
 .promos {
   background-color: #e6e9e2; }
 
-.slider {
-  max-width: 1150px;
+.owl-carrousel {
   overflow: hidden;
   display: flex; }
-  .slider .card {
-    margin: 0 50px; }
 
-.slider.card__container-burgas.owl-carousel.owl-loaded.owl-drag {
+.card__container-burgas.owl-carousel.owl-loaded.owl-drag {
   margin: 0 auto; }
 
 .neon {
@@ -292,6 +289,12 @@ body {
   .card .card__precio {
     display: block;
     margin-top: 5px; }
+
+.owl-carousel .card {
+  width: 200px; }
+  @media screen and (min-width: 18.75rem) {
+    .owl-carousel .card {
+      width: 300px; } }
 
 /* para que las cards del carrousel no tengan box-shadow: */
 div.owl-item > div > img.popup {
