@@ -53,16 +53,7 @@
         margin-top: 1rem;
     }
     .card__img {
-        width: 100%;
-        height: 50%;
-        object-fit: cover;
-        display: block;
-        align-self: start;
-        cursor: pointer;
-        transition: all .4s ease-out;
-        &:hover {
-            transform: scale(1.2);
-        }
+        @extend .img;
     }
     .popup {
         @extend .ventana-popup;
@@ -72,15 +63,13 @@
         }
     }
     .card__h3 {
-        text-transform: capitalize;
-        font-size: 1.25rem;
+        @extend .h3;
     }
     .card__content {
-        font-size: 1.15rem;
+        @extend .content;
     }
     .card__precio {
-        display: block;
-        margin-top: .3125rem;
+        @extend .precio;
     }
     .card__button {
         @extend .botones;
@@ -101,4 +90,31 @@
 
 div.owl-item>div>img.popup {
     box-shadow: none;
+}
+
+.img {
+    @include tamaños(50%,
+    100%);
+    object-fit: cover;
+    display: block;
+    align-self: start;
+    cursor: pointer;
+    transition: all .4s ease-out;
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.h3 {
+    text-transform: capitalize;
+    font-size: 1.25rem;
+}
+
+.content {
+    font-size: 1.15rem;
+}
+
+.precio {
+    display: block;
+    margin-top: .3125rem;
 }

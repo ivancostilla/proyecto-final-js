@@ -78,7 +78,7 @@ function cardsInfo(img, nombre, descripcion, id) {
 const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.", "7");
 const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.", "8");
 const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.", "9");
-const burga1 = new cardsInfo("burger1", "Burga Doble", "Burga con medallón doble, panceta y cheddar.", "1");
+const burga1 = new cardsInfo("burger1", "La Doble", "Burga con medallón doble, panceta y cheddar.", "1");
 const burga2 = new cardsInfo("burger2", "La Criolla", "Burga con cebolla caramelizada, queso criollo y lechuga.", "2");
 const burga3 = new cardsInfo("burger3", "La Completa", "burga con ensalada, aros e cebolla y papas fritas.", "3");
 const burga4 = new cardsInfo("burger4", "La Clásica", "burga con tomate, lechuga y cheddar.", "4");
@@ -161,6 +161,8 @@ $(".owl-carousel").owlCarousel({
 /* efecto botones al hacer click: */
 const boton = document.querySelectorAll(".botones");
 const botonCards = document.querySelectorAll(".card__button");
+const botonPromo = document.querySelectorAll(".promo__button");
+
 
 const botonEffect = (bton) => {
     bton.forEach(btn => {
@@ -181,9 +183,58 @@ const botonEffect = (bton) => {
 };
 botonEffect(boton);
 botonEffect(botonCards);
+botonEffect(botonPromo);
 
 /* ventana modal: */
 ventanaModal.addEventListener("click", () => {
     ventanaModal.classList.toggle('contenedor-modal__open');
     ventanaModal.classList.toggle('contenedor-modal__close');
 });
+
+
+
+/* temporizador de la seccion promos */
+const obtenerTiempoFaltante = tiempofaltante => {
+    let ahora = new Date();
+    let tiempoParaFechaLimite = (new Date(tiempofaltante) - ahora + 1000) / 1000;
+    /* el slice-2 es para que si el contador tiene 1 solo digito, agrege el 0 que puse adelante
+    si tiene 2 digitos, ignora el 0 */
+    /* % de 60 es xq son 60 segundos */
+    let segundosfaltantes = (`0` + Math.floor(tiempoParaFechaLimite % 60)).slice(-2);
+    /* /60 & 60 es porque son 60 minutos por hora de 60 segundos c/u */
+    let minutosfaltantes = (`0` + Math.floor(tiempoParaFechaLimite / 60 % 60)).slice(-2);
+    /* 3600 son los segundos que tiene el dia %24.. xq el dia tiene 24hs */
+    let horasfaltantes = (`0` + Math.floor(tiempoParaFechaLimite / 3600 % 24)).slice(-2);
+    /* acá no hay slice xq no hace falta  ponerle un 0 adelante a los dias.. se pone * 24.. xq l dia tien 24hs */
+    let diasfaltantes = Math.floor(tiempoParaFechaLimite / (3600 * 24));
+
+    return {
+        tiempoParaFechaLimite,
+        segundosfaltantes,
+        minutosfaltantes,
+        horasfaltantes,
+        diasfaltantes
+    };
+
+};
+
+const contador = (tiempofaltante, dias, horas, minutos, segundos) => {
+    const dia = document.querySelector(dias);
+    const hora = document.querySelector(horas);
+    const minuto = document.querySelector(minutos);
+    const segundo = document.querySelector(segundos);
+    const timerUpdate = setInterval(() => {
+        let t = obtenerTiempoFaltante(tiempofaltante);
+        dia.innerHTML = `${t.diasfaltantes}`;
+        hora.innerHTML = `${t.horasfaltantes}`;
+        minuto.innerHTML = `${t.minutosfaltantes}`;
+        segundo.innerHTML = `${t.segundosfaltantes}`;
+        if (t.tiempoParaFechaLimite <= 1) {
+            clearInterval(timerUpdate);
+        }
+    }, 1000);
+};
+
+contador("Tue Dec 10 2020 01:12:00 GMT-0300", ".dia", ".hora", ".minuto", ".segundo");
+contador("Tue Dec 29 2020 23:14:38 GMT-0300", ".dia1", ".hora1", ".minuto1", ".segundo1");
+contador("Tue Dec 19 2020 17:14:56 GMT-0300", ".dia2", ".hora2", ".minuto2", ".segundo2");
