@@ -1,7 +1,6 @@
 const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll(".galeria__img");
-const ventanaModal = document.querySelector(".contenedor-modal__circle");
 const links = navLinks.querySelectorAll(".link");
 
 /* menu responsive hamburguesa */
@@ -64,26 +63,25 @@ setInterval(cambiarBg, 4000);
 
 /* Creando cards dinamicamente: */
 /* 1- funcion para agregar la info a las cards dinamicamente */
-function cardsInfo(img, nombre, descripcion, id) {
+function cardsInfo(img, nombre, descripcion, precio, id) {
     this.img = `img/${img}.webp`;
     this.nombre = nombre;
     this.descripcion = descripcion;
     /* genero precios random: */
-    let precio = Math.round(Math.random() * 700 + 100);
-    this.precio = `$${precio}`;
+    this.precio = precio;
     /* asigno id random por ahora, para pruebas, esas id van a servir para agrgar el producto al carrito */
     this.id = `${id}`;
 };
 /* 2- creamos el contenido de las cards: */
-const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.", "7");
-const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.", "8");
-const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.", "9");
-const burga1 = new cardsInfo("burger1", "La Doble", "Burga con medallón doble, panceta y cheddar.", "1");
-const burga2 = new cardsInfo("burger2", "La Criolla", "Burga con cebolla caramelizada, queso criollo y lechuga.", "2");
-const burga3 = new cardsInfo("burger3", "La Completa", "burga con ensalada, aros e cebolla y papas fritas.", "3");
-const burga4 = new cardsInfo("burger4", "La Clásica", "burga con tomate, lechuga y cheddar.", "4");
-const burga5 = new cardsInfo("burger5", "A Caballo", "burga con tomate, lechuga y huevo frito.", "5");
-const burga6 = new cardsInfo("burger6", "La Burga", "burga con salsa especial de la casa, panceta, tomate, lechuga y cheddar.", "6");
+const papasFritas = new cardsInfo("papas", "Papas Fritas", "Papas fritas con salsa especial de la casa.", "250", "7");
+const nachos = new cardsInfo("nachos", "Nachos", "Nachos con salsa acida, barbacoa, cheddar y verdeo.", "280", "8");
+const chocloFrito = new cardsInfo("choclo", "Choclo Frito", "Choclo frito con salsa especial de la casa.", "260", "9");
+const burga1 = new cardsInfo("burger1", "La Doble", "Burga con medallón doble, panceta y cheddar.", "400", "1");
+const burga2 = new cardsInfo("burger2", "La Criolla", "Burga con cebolla caramelizada, queso criollo y lechuga.", "350", "2");
+const burga3 = new cardsInfo("burger3", "La Completa", "burga con ensalada, aros e cebolla y papas fritas.", "450", "3");
+const burga4 = new cardsInfo("burger4", "La Clásica", "burga con tomate, lechuga y cheddar.", "300", "4");
+const burga5 = new cardsInfo("burger5", "A Caballo", "burga con tomate, lechuga y huevo frito.", "350", "5");
+const burga6 = new cardsInfo("burger6", "La Burga", "burga con salsa especial de la casa, panceta, tomate, lechuga y cheddar.", "400", "6");
 
 
 /* 3- guardamos el contenido de cada card en un array */
@@ -112,11 +110,11 @@ for (i = 0; i < cardsContainer.length; i++) {
         let precio = card["precio"];
         let id = card["id"];
         htmlCode += `
-                <div class="card">
-                    <img class="card__img" src="${img}" alt="comida rapida" loading="lazy">
-                    <h3 class="card__h3">${nombre}</h3>
-                    <p class="card__content">${descripcion}<span class="card__precio">${precio}</span></p>
-                    <button class="card__button" id="${id}">Agregar al carrito</button>
+                <div class="card carritoItem">
+                    <img class="card__img imgItem" src="${img}" alt="comida rapida" loading="lazy">
+                    <h3 class="card__h3 tituloItem">${nombre}</h3>
+                    <p class="card__content">${descripcion}<span class="card__precio precioItem">$${precio}</span></p>
+                    <button class="card__button agregarAlCarrito" id="${id}">Agregar al carrito</button>
                 </div>
 `;
     };
@@ -163,7 +161,6 @@ const boton = document.querySelectorAll(".botones");
 const botonCards = document.querySelectorAll(".card__button");
 const botonPromo = document.querySelectorAll(".promo__button");
 
-
 const botonEffect = (bton) => {
     bton.forEach(btn => {
         btn.addEventListener("click", function(e) {
@@ -186,7 +183,10 @@ botonEffect(botonCards);
 botonEffect(botonPromo);
 
 /* ventana modal: */
-ventanaModal.addEventListener("click", () => {
+const ventanaModal = document.querySelector(".contenedor-modal__circle");
+const cerrarModal = document.querySelector(".contenedor-modal__cerrar-modal");
+
+cerrarModal.addEventListener("click", () => {
     ventanaModal.classList.toggle('contenedor-modal__open');
     ventanaModal.classList.toggle('contenedor-modal__close');
 });
@@ -238,3 +238,43 @@ const contador = (tiempofaltante, dias, horas, minutos, segundos) => {
 contador("Tue Dec 10 2020 01:12:00 GMT-0300", ".dia", ".hora", ".minuto", ".segundo");
 contador("Tue Dec 29 2020 23:14:38 GMT-0300", ".dia1", ".hora1", ".minuto1", ".segundo1");
 contador("Tue Dec 19 2020 17:14:56 GMT-0300", ".dia2", ".hora2", ".minuto2", ".segundo2");
+
+/* console.log(burga6)
+
+let burga6json = JSON.stringify(burga6);
+console.log(burga6json) */
+
+/* carrito e compras */
+
+/* boton para agregar al carrito: */
+const agregarAlCarrito = document.querySelectorAll(".agregarAlCarrito");
+
+/* div contenedor de los productos agregados al carrito: */
+const contenedorProductos = document.querySelector(".carrito__productos-container");
+
+/* al hacer click en el boton de la card capturamos todos los elementos de la card */
+const agregarAlCarritoClikeado = (e) => {
+    /* escuchamos el evento click del boton */
+    const btn = e.target;
+    /* y con closest.. agarramos el elemento mas cercano que contenga la clase carritoitem.. en este 
+    caso seleccionamos toda la card: */
+    const carritoItem = btn.closest(".carritoItem");
+    /* obtenmos l texto del h3 la card: */
+    const tituloItem = carritoItem.querySelector(".tituloItem").textContent;
+    /* obtenmos el precio: */
+    const precioItem = carritoItem.querySelector(".precioItem").textContent;
+    /* obtenemos la imagen: */
+    const imgItem = carritoItem.querySelector(".imgItem").src;
+
+    agregarCardAlCarrito(imgItem, tituloItem, precioItem);
+
+}
+const agregarCardAlCarrito = (imgItem, tituloItem, precioItem) => {
+    const filaCarrito = document.createElement("div");
+    const contenidosProductosDelCarrito = `
+    `;
+};
+/* recorremos todos los elementos que tienen la clase agregaral carrito y ejecutamos la funcion */
+agregarAlCarrito.forEach(botonAgregarAlCarrito => {
+    botonAgregarAlCarrito.addEventListener("click", agregarAlCarritoClikeado);
+});

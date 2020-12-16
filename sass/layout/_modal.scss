@@ -7,7 +7,7 @@
     }
     .contenedor-modal__circle {
         position: fixed;
-        background: url(../img/burga.webp), linear-gradient(45deg, $color-light-yellow, hsl(27, 95%, 50%));
+        background: url(../img/burga.webp), linear-gradient(45deg, hsl(27, 95%, 50%), $color-light-yellow);
         background-size: cover;
         background-repeat: no-repeat;
         background-blend-mode: overlay;
@@ -21,7 +21,7 @@
         .contenedor-modal__article {
             height: 0;
             transition: height 0.8s cubic-bezier(.05, .72, .42, 1);
-            background-color: #FFF;
+            background-color: hsl(0, 0%, 97%);
             box-sizing: border-box;
             box-shadow: inset 0 .9375rem .625rem -0.625rem rgba(0, 0, 0, 0.1);
             .contenedor-modal__contenido {
@@ -32,9 +32,11 @@
                 overflow-y: auto;
                 color: #333;
                 text-align: center;
+                width: 100%;
+                height: 100%;
                 .contenedor-modal__h2 {
-                    color: darken($color-blue, 2%);
-                    font-size: 1.75rem;
+                    color: darken($color-light-yellow, 2%);
+                    font-size: 3rem;
                 }
             }
         }
@@ -47,8 +49,20 @@
             transition: width 0.7s cubic-bezier(.77, .07, .53, 1), border-radius 0.5s cubic-bezier(.05, .72, .42, 1), height 0.7s cubic-bezier(.77, .07, .53, 1), top 0.8s cubic-bezier(.05, .72, .42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
             text-align: center;
             z-index: 2000;
+            & .contenedor-modal__cerrar-modal {
+                width: 30px;
+                max-width: 30px;
+                padding: 0;
+                height: 30px;
+                max-height: 30px;
+                margin: 2px 2px auto auto;
+                &.botones {
+                    box-shadow: none;
+                    background-image: $color-red-gradient;
+                }
+            }
             .contenedor-modal__article {
-                height: 80%;
+                height: 90%;
                 transition: all 1.4s cubic-bezier(.77, .07, .53, 1);
                 .contenedor-modal__contenido {
                     opacity: 1;
@@ -62,6 +76,10 @@
             transition: all 0.4s ease-out, border-radius 0.5s cubic-bezier(.05, .72, .42, 1), top 0.5s ease-out, left 0.5s ease-in, box-shadow 0.5s ease-out;
             cursor: pointer;
             box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            & .contenedor-modal__cerrar-modal {
+                opacity: 0;
+                height: 100%;
+            }
             &:hover {
                 transform: scale(1.2);
             }

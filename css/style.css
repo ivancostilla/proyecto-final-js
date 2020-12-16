@@ -57,20 +57,22 @@ body {
   color: #0f1224;
   background-image: linear-gradient(45deg, #ebdb00 0%, #fbeb09 37%, #eae166 55%);
   background-size: 200% 200%;
-  background-position-x: 100%;
   background-position-y: 0;
+  background-position-x: 100%;
   overflow: hidden;
   transition: all .5s ease;
   position: relative; }
   .botones:hover, .card .card__button:hover, .promo .promo__card .promo__button:hover {
     background-position: 0 90%; }
+  .botones:focus, .card .card__button:focus, .promo .promo__card .promo__button:focus {
+    outline: unset; }
   .botones span, .card .card__button span, .promo .promo__card .promo__button span {
     position: absolute;
-    background-color: #fff;
+    background-color: #413e3e;
     transform: translate(-25%, -25%);
     pointer-events: none;
     border-radius: 50%;
-    animation: onda 1s linear infinite; }
+    animation: onda .3s linear; }
 
 @keyframes onda {
   0% {
@@ -78,8 +80,8 @@ body {
     width: 0;
     opacity: .5; }
   100% {
-    height: 1000.25rem;
-    width: 1000.25rem;
+    height: 500.25rem;
+    width: 500.25rem;
     opacity: .2; } }
 
 .navbar {
@@ -453,7 +455,7 @@ div.owl-item > div > img.popup {
       max-width: 100%; } }
   .contenedor-modal .contenedor-modal__circle {
     position: fixed;
-    background: url(../img/burga.webp), linear-gradient(45deg, #fbeb04, #f97306);
+    background: url(../img/burga.webp), linear-gradient(45deg, #f97306, #fbeb04);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
@@ -468,7 +470,7 @@ div.owl-item > div > img.popup {
     .contenedor-modal .contenedor-modal__circle .contenedor-modal__article {
       height: 0;
       transition: height 0.8s cubic-bezier(0.05, 0.72, 0.42, 1);
-      background-color: #FFF;
+      background-color: #f7f7f7;
       box-sizing: border-box;
       box-shadow: inset 0 0.9375rem 0.625rem -0.625rem rgba(0, 0, 0, 0.1); }
       .contenedor-modal .contenedor-modal__circle .contenedor-modal__article .contenedor-modal__contenido {
@@ -478,10 +480,12 @@ div.owl-item > div > img.popup {
         max-height: 100%;
         overflow-y: auto;
         color: #333;
-        text-align: center; }
+        text-align: center;
+        width: 100%;
+        height: 100%; }
         .contenedor-modal .contenedor-modal__circle .contenedor-modal__article .contenedor-modal__contenido .contenedor-modal__h2 {
-          color: #06186f;
-          font-size: 1.75rem; }
+          color: #f1e104;
+          font-size: 3rem; }
     .contenedor-modal .contenedor-modal__circle.contenedor-modal__open {
       border-radius: .3125rem;
       box-shadow: 0 0 0 70vmax rgba(0, 0, 0, 0.3);
@@ -492,8 +496,18 @@ div.owl-item > div > img.popup {
       transition: width 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), border-radius 0.5s cubic-bezier(0.05, 0.72, 0.42, 1), height 0.7s cubic-bezier(0.77, 0.07, 0.53, 1), top 0.8s cubic-bezier(0.05, 0.72, 0.42, 1), left 1.5s ease-out, box-shadow 0.3s ease-out;
       text-align: center;
       z-index: 2000; }
+      .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal {
+        width: 30px;
+        max-width: 30px;
+        padding: 0;
+        height: 30px;
+        max-height: 30px;
+        margin: 2px 2px auto auto; }
+        .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.botones, .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .card .contenedor-modal__cerrar-modal.card__button, .card .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.card__button, .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .promo .promo__card .contenedor-modal__cerrar-modal.promo__button, .promo .promo__card .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.promo__button {
+          box-shadow: none;
+          background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%); }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__article {
-        height: 80%;
+        height: 90%;
         transition: all 1.4s cubic-bezier(0.77, 0.07, 0.53, 1); }
         .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__article .contenedor-modal__contenido {
           opacity: 1;
@@ -504,8 +518,116 @@ div.owl-item > div > img.popup {
       transition: all 0.4s ease-out, border-radius 0.5s cubic-bezier(0.05, 0.72, 0.42, 1), top 0.5s ease-out, left 0.5s ease-in, box-shadow 0.5s ease-out;
       cursor: pointer;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
+      .contenedor-modal .contenedor-modal__circle.contenedor-modal__close .contenedor-modal__cerrar-modal {
+        opacity: 0;
+        height: 100%; }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__close:hover {
         transform: scale(1.2); }
+
+.carrito {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  flex-direction: column; }
+
+.carrito__header,
+.carrito__total-container,
+.carrito__total-group,
+.carrito__productos-container,
+.carrito__producto,
+.producto-contenido {
+  display: flex; }
+
+.carrito__total-container,
+.carrito__productos-container {
+  justify-content: space-around; }
+
+.carrito__total {
+  flex-grow: 0; }
+
+.carrito__header {
+  min-height: 60px;
+  height: 60px;
+  align-items: center; }
+
+.carrito__item {
+  margin: -30px auto;
+  font-size: 2rem;
+  overflow-x: hidden; }
+
+.carrito__titulo {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  /*para truncar el texto: */
+  width: 90%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.producto {
+  flex-grow: 3; }
+
+.cantidad, .precio, .card .card__precio, .promo .promo__card .promo__precio {
+  flex-grow: 1; }
+
+.producto-contenido {
+  flex: 0 0 57%;
+  max-width: 57%;
+  min-width: 57%; }
+
+.producto-precio {
+  flex: 0 0 10.6%;
+  max-width: 14.6%;
+  min-width: 14.6%; }
+
+.producto-cantidad {
+  flex: 0 0 33.3%;
+  max-width: 31.3%;
+  min-width: 31.3%; }
+
+.carrito__productos-container {
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-x: hidden; }
+
+.carrito__producto {
+  width: 100%;
+  align-items: center; }
+
+.producto-contenido {
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap; }
+  .producto-contenido .producto-contenido__titulo {
+    font-size: 1.5rem; }
+
+.producto-cantidad__input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #e6e9e2;
+  border-style: none;
+  border-radius: 5px;
+  margin-right: 5px; }
+
+.producto-cantidad__button {
+  width: 30px;
+  max-width: 30px;
+  padding: 0;
+  height: 30px;
+  max-height: 30px;
+  font-size: .6rem; }
+  .producto-cantidad__button.botones, .card .producto-cantidad__button.card__button, .promo .promo__card .producto-cantidad__button.promo__button {
+    box-shadow: none;
+    background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%); }
+
+.producto-contenido__img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%; }
 
 .footer {
   height: 6rem;

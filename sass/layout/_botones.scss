@@ -11,21 +11,24 @@
     color: $color-black;
     background-image: $color-yellow-gradient;
     background-size: 200% 200%;
-    background-position-x: 100%;
     background-position-y: 0;
+    background-position-x: 100%;
     overflow: hidden;
     transition: all .5s ease;
     position: relative;
     &:hover {
         background-position: 0 90%;
     }
+    &:focus {
+        outline: unset;
+    }
     span {
         position: absolute;
-        background-color: #fff;
+        background-color: rgb(65, 62, 62);
         transform: translate(-25%, -25%);
         pointer-events: none;
         border-radius: 50%;
-        animation: onda 1s linear infinite;
+        animation: onda .3s linear;
     }
     @keyframes onda {
         0% {
@@ -33,7 +36,7 @@
             opacity: .5;
         }
         100% {
-            @include tamaños(1000.25rem, 1000.25rem);
+            @include tamaños(500.25rem, 500.25rem);
             opacity: .2;
         }
     }

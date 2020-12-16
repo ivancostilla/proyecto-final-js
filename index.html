@@ -92,8 +92,6 @@
                     <button class="promo__button" id="">Agregar al carrito</button>
                 </div>
             </article>
-            <!-- Slider main container -->
-
         </section>
         <section class="burgas" id="lasBurgas">
             <article>
@@ -118,11 +116,46 @@
         <section>
             <aside class="contenedor-modal">
                 <div class="contenedor-modal__circle contenedor-modal__close">
+                    <button class="contenedor-modal__cerrar-modal botones">x</button>
                     <article class="contenedor-modal__article">
                         <div class="contenedor-modal__contenido">
                             <h2 class="contenedor-modal__h2">Tu Carrito</h2>
-                            <p>falta terminar el carrito, que se vayan agregando los productos automaticamente, si el cliente quiere agregar mas productos del mismo tipo y hacer la suma total de la cuenta.
-                            </p>
+                            <div class="carrito">
+                                <div class="carrito__header">
+                                    <div class="producto carrito__item">
+                                        <h6 class="carrito__titulo">Producto</h6>
+                                    </div>
+                                    <div class="precio carrito__item">
+                                        <h6 class="carrito__titulo">Precio</h6>
+                                    </div>
+                                    <div class="cantidad carrito__item">
+                                        <h6 class="carrito__titulo">Cantidad</h6>
+                                    </div>
+                                </div>
+                                <div class="carrito__productos-container">
+                                    <div class="carrito__producto">
+                                        <div class="producto-contenido carrito__producto-item">
+                                            <img class="producto-contenido__img" src="img/burga.webp" alt="">
+                                            <h6 class="producto-contenido__titulo">titulo</h6>
+                                        </div>
+                                        <div class="producto-precio carrito__producto-item">
+                                            <p>$00.00</p>
+                                        </div>
+                                        <div class="producto-cantidad carrito__producto-item">
+                                            <input class="producto-cantidad__input" type="number" name="" id="" value="1">
+                                            <button class="botones producto-cantidad__button">X</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="carrito__total-container">
+                                    <div class="carrito__total-group">
+                                        <p class="total">Total:</p>
+                                        <p class="carrito__total">$00.00</p>
+                                    </div>
+                                    <button class="carrito__button botones" id="comprar">Comprar</button>
+                                </div>
+                            </div>
                         </div>
                     </article>
                 </div>
