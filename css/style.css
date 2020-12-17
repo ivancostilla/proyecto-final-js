@@ -629,6 +629,13 @@ div.owl-item > div > img.popup {
   object-fit: contain;
   border-radius: 50%; }
 
+.carrito__total-container {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  align-items: center; }
+  .carrito__total-container p {
+    margin: auto 2px; }
+
 .footer {
   height: 6rem;
   background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%);

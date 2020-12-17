@@ -123,3 +123,12 @@
     object-fit: contain;
     border-radius: 50%;
 }
+
+.carrito__total-container {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    align-items: center;
+    p {
+        margin: auto 2px;
+    }
+}

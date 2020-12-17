@@ -115,8 +115,7 @@ for (i = 0; i < cardsContainer.length; i++) {
                     <h3 class="card__h3 tituloItem">${nombre}</h3>
                     <p class="card__content">${descripcion}<span class="card__precio precioItem">$${precio}</span></p>
                     <button class="card__button agregarAlCarrito" id="${id}">Agregar al carrito</button>
-                </div>
-`;
+                </div>`;
     };
     //8- Se asignan las cards on istinta info.. a los distintos contnedores.
     containers[i].innerHTML = htmlCode;
@@ -244,7 +243,7 @@ contador("Tue Dec 19 2020 17:14:56 GMT-0300", ".dia2", ".hora2", ".minuto2", ".s
 let burga6json = JSON.stringify(burga6);
 console.log(burga6json) */
 
-/* carrito e compras */
+/* carrito de compras: */
 
 /* boton para agregar al carrito: */
 const agregarAlCarrito = document.querySelectorAll(".agregarAlCarrito");
@@ -252,6 +251,56 @@ const agregarAlCarrito = document.querySelectorAll(".agregarAlCarrito");
 /* div contenedor de los productos agregados al carrito: */
 const contenedorProductos = document.querySelector(".carrito__productos-container");
 
+/* boton comprar: */
+const botonComprar = document.getElementById("comprar");
+const btncomprarClickeado = () => {
+
+    if (contenedorProductos.innerHTML == "") {
+        Command: toastr["error"]("intenta agregar algún producto", "El carrito está vacío")
+
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
+    else {
+        Command: toastr["success"]("recibirás tu pedido pronto", "Gracias por tu compra")
+
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        contenedorProductos.innerHTML = "";
+    };
+    actualizarTotalDelCarrito();
+};
+botonComprar.addEventListener("click", btncomprarClickeado);
 /* al hacer click en el boton de la card capturamos todos los elementos de la card */
 const agregarAlCarritoClikeado = (e) => {
     /* escuchamos el evento click del boton */
@@ -270,11 +319,116 @@ const agregarAlCarritoClikeado = (e) => {
 
 }
 const agregarCardAlCarrito = (imgItem, tituloItem, precioItem) => {
-    const filaCarrito = document.createElement("div");
+
+    /* hacemos que no se repitan los productos y que si se repiten, se sume al value del input: */
+    const tituloDelProducto = contenedorProductos.querySelectorAll(".producto-contenido__titulo");
+    for (let i = 0; i < tituloDelProducto.length; i++) {
+        /* si los titulos de los productos son iguales: */
+        if (tituloDelProducto[i].innerText === tituloItem) {
+            /* llamo a la clase que contiene el input */
+            let cantidadDeProductos = tituloDelProducto[i].parentElement.parentElement.querySelector(".producto-cantidad__input");
+            /* parseo el value xq si no no me lo cambia: y ademas le aumento el value en 1 */
+            Number(cantidadDeProductos.value++)
+                /* alert: */
+            Command: toastr["success"]("Tu producto se agregó correctamente al carrito", "Producto agregado ")
+            toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-bottom-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "3000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "swing",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                /* actualizo el valor total del carrito */
+            actualizarTotalDelCarrito();
+            /* con el return hago que no se repita el producto en el carrito */
+            return;
+        }
+    }
     const contenidosProductosDelCarrito = `
-    `;
+    <div class="carrito__producto">
+        <div class="producto-contenido carrito__producto-item">
+            <img class="producto-contenido__img" src="${imgItem}" alt="">
+            <h6 class="producto-contenido__titulo">${tituloItem}</h6>
+        </div>
+        <div class="producto-precio carrito__producto-item">
+            <p>${precioItem}</p>
+        </div>
+        <div class="producto-cantidad carrito__producto-item">
+            <input class="producto-cantidad__input" type="number" value="1">
+            <button class="botones producto-cantidad__button">X</button>
+        </div>
+    </div>`;
+    contenedorProductos.innerHTML += contenidosProductosDelCarrito;
+
+    /* eliminar productos en el carrito */
+    const eliminarProducto = contenedorProductos.querySelectorAll(".producto-cantidad__button");
+    eliminarProducto.forEach(botonEliminar => {
+        botonEliminar.addEventListener("click", removerItemDelCarrito);
+    });
+    /* actualizar cantidad en  el input de cada producto: */
+    const cantidadDelProducto = contenedorProductos.querySelectorAll(".producto-cantidad__input");
+    cantidadDelProducto.forEach(cantidad => {
+        cantidad.addEventListener("change", cantidadCambiada);
+    });
+    actualizarTotalDelCarrito();
 };
-/* recorremos todos los elementos que tienen la clase agregaral carrito y ejecutamos la funcion */
+
+/* funion para saber el $ total del carrito: */
+const actualizarTotalDelCarrito = () => {
+    let total = 0;
+    /* este es el P que muestra el total: */
+    const totalDelCarrito = document.querySelector(".carrito__total");
+
+    /* aca slccionamos el precio de cada producto que se agrega al carrito */
+    const itemsDelCarrito = document.querySelectorAll(".carrito__producto");
+
+    /* recorremos  toos los productos dentro del carrito: */
+    itemsDelCarrito.forEach(itemsDelCarrito => {
+        /* obtenemos el precio del producto, parseado a numero, y eliminando el signo $: */
+        const precioDelProductoEnElCarrito = Number(itemsDelCarrito.querySelector(".producto-precio").textContent.replace("$", ""));
+
+        /* acá seleccionamos la canidad de productos en el carrito */
+        const cantidadDeItems = Number(itemsDelCarrito.querySelector(".producto-cantidad__input").value);
+
+        /* y el total lo sumamos al precio de productos por la cantidad de losmismos: */
+        total = total + precioDelProductoEnElCarrito * cantidadDeItems;
+    });
+
+    /* guardamos el total en el P, el toFixed es para que el precio muestre hasta 2 decimales */
+    totalDelCarrito.innerHTML = ` $${total.toFixed(2)}`;
+};
+
+/* funcion para eliminar productos del carrito: */
+const removerItemDelCarrito = (e) => {
+    /* obtenemos el evento al hacer click en el boton: */
+    const botonEliminarClikeado = e.target;
+    /* y eliminamos la clase mas cercana al boton eliminar Producto:
+    en este caso elegimos la clase que contiene a todo el producto en el carrito*/
+    botonEliminarClikeado.closest(".carrito__producto").remove();
+    /* llamo a esta funcion para que el total se actualize en tiempo real al
+    eliminar algun producto: */
+    actualizarTotalDelCarrito();
+};
+
+const cantidadCambiada = (e) => {
+    const input = e.target;
+    /* para que el input no tnga negativos */
+    input.value <= 0 ? (input.value = 1) : null;
+    /* actualizamos el precio al cambiar la cantidad: */
+    actualizarTotalDelCarrito();
+};
+/* recorremos todos los elementos que tienen la clase agregar al carrito y ejecutamos la funcion */
 agregarAlCarrito.forEach(botonAgregarAlCarrito => {
     botonAgregarAlCarrito.addEventListener("click", agregarAlCarritoClikeado);
+
 });
