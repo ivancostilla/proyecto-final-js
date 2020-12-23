@@ -34,7 +34,7 @@ $(window).on('scroll', function() {
 
 /* funcion para asignar la clase popup
  a distintas variables con distintos elementos html */
-/* esta funcion la creo xq quiero darle l mismo stilo poup a la galeria de img
+/* esta funcion la creo xq quiero darle el mismo estilo popup a la galeria de img
 y a las img de las cards */
 const asignarPopup = (elem) => {
     (elem).forEach(popup => {
@@ -117,7 +117,7 @@ for (i = 0; i < cardsContainer.length; i++) {
                     <button class="card__button agregarAlCarrito" id="${id}">Agregar al carrito</button>
                 </div>`;
     };
-    //8- Se asignan las cards on istinta info.. a los distintos contnedores.
+    //8- Se asignan las cards con distinta info.. a los distintos contenedores:
     containers[i].innerHTML = htmlCode;
 }
 
@@ -128,7 +128,7 @@ const imgCard = document.querySelectorAll(".card__img");
 /* si pongo la variable arriba de todo, no me toma el evento */
 asignarPopup(imgCard);
 
-/* carrousel de la seccion burgas:(usando una libreria) */
+/* carrousel de la seccion burgas:(usando una libreria de jquery) */
 $(".owl-carousel").owlCarousel({
     loop: false,
     center: false,
@@ -152,8 +152,7 @@ $(".owl-carousel").owlCarousel({
             nav: false
         }
     }
-
-})
+});
 
 /* efecto botones al hacer click: */
 const boton = document.querySelectorAll(".botones");
