@@ -49,11 +49,11 @@ asignarPopup(imgPopup);
 /* img de portada dinamica, que cambia cada 4 segundos */
 function cambiarBg() {
     /* si solo pongo la url, no me toma la propiedad bg attchment en css, por eso coloco todo */
-    const images = [` url(../img/hero1.webp) no-repeat 50% 100% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
-        ` url(../img/hero2.webp) no-repeat 50% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
-        ` url(../img/hero3.webp) no-repeat 50% 100% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
-        ` url(../img/hero4.webp) no-repeat 50% 75% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`,
-        ` url(../img/hero5.webp) no-repeat 50% 100% / cover fixed, linear-gradient(120deg, hsla(337, 69%, 55%, .4) 0%, hsla(0, 88%, 47%, .4) 100%)`
+    const images = [` url(../img/hero1.webp) no-repeat 50% 100% / cover fixed`,
+        ` url(../img/hero2.webp) no-repeat 50% 75% / cover fixed`,
+        ` url(../img/hero3.webp) no-repeat 50% 100% / cover fixed`,
+        ` url(../img/hero4.webp) no-repeat 50% 75% / cover fixed`,
+        ` url(../img/hero5.webp) no-repeat 50% 100% / cover fixed`
     ]
     const head = document.querySelector(".head__img-hero");
     const bg = images[Math.floor(Math.random() * images.length)];
@@ -182,12 +182,14 @@ botonEffect(botonPromo);
 
 /* ventana modal: */
 const ventanaModal = document.querySelector(".contenedor-modal__circle");
-const cerrarModal = document.querySelector(".contenedor-modal__cerrar-modal");
+const cerrarModal = document.querySelectorAll(".cerrar-modal");
 
-cerrarModal.addEventListener("click", () => {
-    ventanaModal.classList.toggle('contenedor-modal__open');
-    ventanaModal.classList.toggle('contenedor-modal__close');
-});
+cerrarModal.forEach(btn => {
+    btn.addEventListener("click", () => {
+        ventanaModal.classList.toggle('contenedor-modal__open');
+        ventanaModal.classList.toggle('contenedor-modal__close');
+    });
+})
 
 
 
@@ -417,8 +419,20 @@ function insertarCarritoHTML() {
         const cantidadDelProducto = carrito.querySelectorAll(".producto-cantidad__input");
         cantidadDelProducto.forEach(cantidadInput => {
             cantidadInput.addEventListener("change", cantidadCambiada);
+
         });
     });
+    /* muestro la cantidad de productos en el crrito a modo notificacion: */
+    let mostrarCantidadDeProductos = [];
+    for (let i = 0; i < articulosCarrito.length; i++) {
+        mostrarCantidadDeProductos.push(articulosCarrito[i].cantidad)
+    };
+    mostrarCantidadDeProductos = [...mostrarCantidadDeProductos].reduce((acc, el) => acc + el, 0)
+    const notificacionCarrito = document.querySelectorAll(".notificacion-carrito");
+    notificacionCarrito.forEach(notificacion => {
+
+        notificacion.innerHTML = mostrarCantidadDeProductos;
+    })
     actualizarTotalDelCarrito();
     guardarStorage();
 };

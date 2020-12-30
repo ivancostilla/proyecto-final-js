@@ -21,8 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <title>La Burguería inc</title>
 </head>
-<!-- to do: agregar icono con numero en el modal cerrado para indicar que hay productos en el carrito
-terminar las cards de promociones
+<!-- to do: 
 empezar con la seccion principal de la pagina -->
 
 <body>
@@ -39,8 +38,8 @@ empezar con la seccion principal de la pagina -->
             </ul>
             <a href="#home" class="logo link">La Burgueria.inc</a>
             <ul class="navbar__links li2">
+                <li class="navbar__li"><a class="navbar__a link cerrar-modal" href="#carrito">Tu Carrito<div class="notificacion-carrito"></div></a></li>
                 <li class="navbar__li"><a class="navbar__a link" href="#extras">Extras</a></li>
-                <li class="navbar__li"><a class="navbar__a link" href="#contactanos">Contactanos</a></li>
             </ul>
         </nav>
     </header>
@@ -123,7 +122,8 @@ empezar con la seccion principal de la pagina -->
         <section>
             <aside class="contenedor-modal">
                 <div class="contenedor-modal__circle contenedor-modal__close">
-                    <button class="contenedor-modal__cerrar-modal botones">x</button>
+                    <button class="contenedor-modal__cerrar-modal cerrar-modal botones">x</button>
+                    <div class="notificacion-carrito"></div>
                     <article class="contenedor-modal__article">
                         <div class="contenedor-modal__contenido">
                             <h2 class="contenedor-modal__h2">Tu Carrito</h2>

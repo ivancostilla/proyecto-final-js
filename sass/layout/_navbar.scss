@@ -17,6 +17,16 @@
     .navbar__links {
         display: none;
     }
+    & .notificacion-carrito {
+        color: darken($color: $color-grey, $amount: 90);
+        height: 20px;
+        width: 20px;
+        background-color: $color-light-yellow;
+        border-radius: 50%;
+        font-size: 15px;
+        position: absolute;
+        transform: translate(70px, -35px);
+    }
     &.open {
         flex-direction: column-reverse;
         justify-content: space-evenly;

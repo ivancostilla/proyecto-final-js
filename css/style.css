@@ -102,6 +102,15 @@ body {
   box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.4); }
   .navbar .navbar__links {
     display: none; }
+  .navbar .notificacion-carrito {
+    color: black;
+    height: 20px;
+    width: 20px;
+    background-color: #fbeb04;
+    border-radius: 50%;
+    font-size: 15px;
+    position: absolute;
+    transform: translate(70px, -35px); }
   .navbar.open {
     flex-direction: column-reverse;
     justify-content: space-evenly;
@@ -506,6 +515,8 @@ div.owl-item > div > img.popup {
         .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.botones, .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .card .contenedor-modal__cerrar-modal.card__button, .card .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.card__button, .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .promo .promo__card .contenedor-modal__cerrar-modal.promo__button, .promo .promo__card .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__cerrar-modal.promo__button {
           box-shadow: none;
           background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%); }
+      .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .notificacion-carrito {
+        display: none; }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__open .contenedor-modal__article {
         height: 90%;
         transition: all 1.4s cubic-bezier(0.77, 0.07, 0.53, 1); }
@@ -520,9 +531,20 @@ div.owl-item > div > img.popup {
       box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__close .contenedor-modal__cerrar-modal {
         opacity: 0;
-        height: 100%; }
+        height: 100%;
+        position: absolute;
+        z-index: 1000; }
       .contenedor-modal .contenedor-modal__circle.contenedor-modal__close:hover {
         transform: scale(1.2); }
+      .contenedor-modal .contenedor-modal__circle.contenedor-modal__close .notificacion-carrito {
+        height: 20px;
+        width: 20px;
+        transform: translate(15px, -15px);
+        background-color: red;
+        color: #e6e9e2;
+        text-align: center;
+        border-radius: 50%;
+        transition: all 1s ease; }
 
 .carrito {
   display: flex;

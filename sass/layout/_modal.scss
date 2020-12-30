@@ -61,6 +61,9 @@
                     background-image: $color-red-gradient;
                 }
             }
+            & .notificacion-carrito {
+                display: none;
+            }
             .contenedor-modal__article {
                 height: 90%;
                 transition: all 1.4s cubic-bezier(.77, .07, .53, 1);
@@ -79,9 +82,21 @@
             & .contenedor-modal__cerrar-modal {
                 opacity: 0;
                 height: 100%;
+                position: absolute;
+                z-index: 1000;
             }
             &:hover {
                 transform: scale(1.2);
+            }
+            & .notificacion-carrito {
+                height: 20px;
+                width: 20px;
+                transform: translate(15px, -15px);
+                background-color: red;
+                color: $color-grey;
+                text-align: center;
+                border-radius: 50%;
+                transition: all 1s ease;
             }
         }
     }
