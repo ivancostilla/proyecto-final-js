@@ -1,0 +1,65 @@
+[{
+        "img": "papas",
+        "nombre": "Papas Fritas",
+        "descripcion": "Papas fritas con salsa especial de la casa.",
+        "precio": "250",
+        "id": "7"
+    },
+    {
+        "img": "nachos",
+        "nombre": "Nachos",
+        "descripcion": "Nachos con salsa acida, barbacoa, cheddar y verdeo.",
+        "precio": "280",
+        "id": "8"
+    },
+    {
+        "img": "choclo",
+        "nombre": "Choclo Frito",
+        "descripcion": "Choclo frito con salsa especial de la casa.",
+        "precio": "260",
+        "id": "9"
+    },
+    {
+        "img": "burger1",
+        "nombre": "La Doble",
+        "descripcion": "Burga con medallón doble, panceta y cheddar.",
+        "precio": "400",
+        "id": "1"
+    },
+    {
+        "img": "burger2",
+        "nombre": "La Criolla",
+        "descripcion": "Burga con cebolla caramelizada, queso criollo y lechuga.",
+        "precio": "350",
+        "id": "2"
+    },
+    {
+        "img": "burger3",
+        "nombre": "La Completa",
+        "descripcion": "burga con ensalada, aros e cebolla y papas fritas.",
+        "precio": "450",
+        "id": "3"
+    },
+    {
+        "img": "burger4",
+        "nombre": "La Clásica",
+        "descripcion": "burga con tomate, lechuga y cheddar.",
+        "precio": "300",
+        "id": "4"
+    },
+    {
+        "img": "burger5",
+        "nombre": "A Caballo",
+        "descripcion": "burga con tomate, lechuga y huevo frito.",
+        "precio": "350",
+        "id": "5"
+    },
+    {
+        "img": "burger6",
+        "nombre": "La Burga",
+        "descripcion": "burga con salsa especial de la casa, panceta, tomate, lechuga y cheddar.",
+        "precio": "400",
+        "id": "6"
+    }
+
+]
