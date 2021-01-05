@@ -2,9 +2,9 @@ const hamburger = document.querySelector(".navbar__hamburger");
 const navLinks = document.querySelector(".navbar");
 const imgPopup = document.querySelectorAll(".galeria__img");
 const links = navLinks.querySelectorAll(".link");
+const promoPopup = document.querySelectorAll(".promo__img");
 
 /* menu responsive hamburguesa */
-
 /* codigo para que al hacer click en un link el navbar se cierre */
 links.forEach(link => {
     link.addEventListener("click", () => {
@@ -45,6 +45,7 @@ const asignarPopup = (elem) => {
 };
 /* galeria popup */
 asignarPopup(imgPopup);
+asignarPopup(promoPopup);
 
 /* img de portada dinamica, que cambia cada 4 segundos */
 function cambiarBg() {
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
              la coloco aqui xq tengo que invocar la funcion despues de haber
              creado las cards dinamicamente con js */
             const imgCard = document.querySelectorAll(".card__img");
-            /* si pongo la variable arriba de todo, no me toma el evento */
+            /* si pongo la variable arriba de todo, no me toma el evento xq stoy usano funion flecha */
             asignarPopup(imgCard);
 
             /* carrousel de la seccion burgas:(usando una libreria de jquery) */
@@ -194,53 +195,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             })
 
-
-
             /* temporizador de la seccion promos */
-            const obtenerTiempoFaltante = tiempofaltante => {
-                let ahora = new Date();
-                let tiempoParaFechaLimite = (new Date(tiempofaltante) - ahora + 1000) / 1000;
-                /* el slice-2 es para que si el contador tiene 1 solo digito, agrege el 0 que puse adelante
-                si tiene 2 digitos, ignora el 0 */
-                /* % de 60 es xq son 60 segundos */
-                let segundosfaltantes = (`0` + Math.floor(tiempoParaFechaLimite % 60)).slice(-2);
-                /* /60 & 60 es porque son 60 minutos por hora de 60 segundos c/u */
-                let minutosfaltantes = (`0` + Math.floor(tiempoParaFechaLimite / 60 % 60)).slice(-2);
-                /* 3600 son los segundos que tiene el dia %24.. xq el dia tiene 24hs */
-                let horasfaltantes = (`0` + Math.floor(tiempoParaFechaLimite / 3600 % 24)).slice(-2);
-                /* acá no hay slice xq no hace falta  ponerle un 0 adelante a los dias.. se pone * 24.. xq l dia tien 24hs */
-                let diasfaltantes = Math.floor(tiempoParaFechaLimite / (3600 * 24));
 
-                return {
-                    tiempoParaFechaLimite,
-                    segundosfaltantes,
-                    minutosfaltantes,
-                    horasfaltantes,
-                    diasfaltantes
-                };
-
-            };
-
-            const contador = (tiempofaltante, dias, horas, minutos, segundos) => {
-                const dia = document.querySelector(dias);
-                const hora = document.querySelector(horas);
-                const minuto = document.querySelector(minutos);
-                const segundo = document.querySelector(segundos);
-                const timerUpdate = setInterval(() => {
-                    let t = obtenerTiempoFaltante(tiempofaltante);
-                    dia.innerHTML = `${t.diasfaltantes}`;
-                    hora.innerHTML = `${t.horasfaltantes}`;
-                    minuto.innerHTML = `${t.minutosfaltantes}`;
-                    segundo.innerHTML = `${t.segundosfaltantes}`;
-                    if (t.tiempoParaFechaLimite <= 1) {
-                        clearInterval(timerUpdate);
-                    }
-                }, 1000);
-            };
-
-            contador("Fri Dec 10 2021 01:12:00 GMT-0300", ".dia", ".hora", ".minuto", ".segundo");
-            contador("Fri Dec 29 2021 23:14:38 GMT-0300", ".dia1", ".hora1", ".minuto1", ".segundo1");
-            contador("Fri Dec 19 2021 17:14:56 GMT-0300", ".dia2", ".hora2", ".minuto2", ".segundo2");
+            setInterval(() => {
+                let d = new Date();
+                let min = 60 - d.getMinutes();
+                if ((min + '').length == 1) {
+                    min = '0' + min;
+                }
+                let sec = 60 - d.getSeconds();
+                if ((sec + '').length == 1) {
+                    sec = '0' + sec;
+                }
+                /* esto es prueba:
+                    if (sec == 0) {
+                        min = 60 - d.getMinutes();
+                    } */
+                const minuto = document.querySelectorAll(".minuto");
+                const segundo = document.querySelectorAll(".segundo");
+                minuto.forEach(minuto => {
+                    minuto.innerHTML = `${min}`
+                })
+                segundo.forEach(segundo => {
+                    segundo.innerHTML = `${sec}`
+                })
+            }, 1000);
 
             /* carrito: */
             const carrito = document.querySelector('.carrito__productos-container'); /* contenedor de los productos en el modal */

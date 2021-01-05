@@ -50,6 +50,9 @@
         .promo__img {
             @extend .img;
         }
+        .popup {
+            @extend .ventana-popup;
+        }
         .promo__h3 {
             @extend .h3;
             color: $color-light-yellow
@@ -87,10 +90,10 @@
                 content: 'Horas';
             }
             & .tiempo.minuto:before {
-                content: 'minutos';
+                content: 'Minutos';
             }
             & .tiempo.segundo:before {
-                content: 'segundos';
+                content: 'Segundos';
             }
             & .tiempo.segundo:before,
             & .tiempo.segundo {

@@ -399,9 +399,9 @@ div.owl-item > div > img.popup {
       .promo .promo__card .promo__contador .tiempo.hora:before {
         content: 'Horas'; }
       .promo .promo__card .promo__contador .tiempo.minuto:before {
-        content: 'minutos'; }
+        content: 'Minutos'; }
       .promo .promo__card .promo__contador .tiempo.segundo:before {
-        content: 'segundos'; }
+        content: 'Segundos'; }
       .promo .promo__card .promo__contador .tiempo.segundo:before,
       .promo .promo__card .promo__contador .tiempo.segundo {
         color: #fbeb04; }
@@ -437,7 +437,7 @@ div.owl-item > div > img.popup {
       grid-template-columns: repeat(3, 1fr); } }
 
 /*fin estilos seccion gallery */
-.ventana-popup, .card .popup, .galeria .popup {
+.ventana-popup, .card .popup, .promo .promo__card .popup, .galeria .popup {
   position: fixed;
   object-fit: cover;
   top: calc(15% - 35px);
@@ -451,7 +451,7 @@ div.owl-item > div > img.popup {
   transition: all .5s ease-out;
   opacity: 1; }
   @media screen and (min-width: 300px) {
-    .ventana-popup, .card .popup, .galeria .popup {
+    .ventana-popup, .card .popup, .promo .promo__card .popup, .galeria .popup {
       object-fit: cover; } }
 
 .contenedor-modal {
