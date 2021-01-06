@@ -196,32 +196,45 @@ document.addEventListener('DOMContentLoaded', function() {
             })
 
             /* temporizador de la seccion promos */
+            contador = 0;
+            timeLeft = 59;
 
-            setInterval(() => {
-                let d = new Date();
-                let min = 60 - d.getMinutes();
-                if ((min + '').length == 1) {
-                    min = '0' + min;
-                }
-                let sec = 60 - d.getSeconds();
-                if ((sec + '').length == 1) {
-                    sec = '0' + sec;
-                }
-                /* esto es prueba:
-                    if (sec == 0) {
-                        min = 60 - d.getMinutes();
-                    } */
-                const minuto = document.querySelectorAll(".minuto");
-                const segundo = document.querySelectorAll(".segundo");
-                minuto.forEach(minuto => {
-                    minuto.innerHTML = `${min}`
-                })
-                segundo.forEach(segundo => {
-                    segundo.innerHTML = `${sec}`
-                })
-            }, 1000);
 
-            /* carrito: */
+            // function convertSec(s) {
+            //     mins = floor(60 / s);
+            //     secs = s % 60;
+            // }
+
+            function timer() {
+                min = 5;
+                let minuto = document.querySelectorAll(".minuto");
+                let segundo = document.querySelectorAll(".segundo");
+
+                function cuentaRegresiva() {
+                    contador++;
+                    let resto = timeLeft - contador
+                    if (resto == 00) {
+                        timeLeft = 59
+                        contador = 0
+                        if (timeLeft == 59) {
+                            console.log(timeLeft)
+                            min--;
+                        }
+                        if (min == 0) {
+                            min = 5
+                        }
+                    }
+                    minuto.forEach(minuto => {
+                        minuto.innerHTML = `${min}`
+                    })
+                    segundo.forEach(segundo => {
+                        segundo.innerHTML = `${resto}`
+                    })
+                }
+                setInterval(cuentaRegresiva, 1000)
+            }
+            timer()
+                /* carrito: */
             const carrito = document.querySelector('.carrito__productos-container'); /* contenedor de los productos en el modal */
             const agregarProductos = document.querySelectorAll('.agregarAlCarrito'); /* contnedor de cards */
             const botonComprar = document.getElementById("comprar"); /* boton comprar */
@@ -380,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 borrarHTML();
 
                 articulosCarrito.forEach(producto => {
-                    /* Destrucuring sobre le objeto producto */
+                    /* Destrucuring sobre el objeto producto */
                     const { nombre, imagen, precio, cantidad, id } = producto;
                     /* los productos s van agregando en filas dentro del modal del carrito: */
                     const row = `           
