@@ -199,44 +199,25 @@ document.addEventListener('DOMContentLoaded', function() {
             /* paso como parametros primero: la clase html que muestra los minutos,
             segundo:  los minutos que quiero que tengan los timers,
             tercero: la clase html que muestra los segundos */
-            function Temporizador(horas, inicioHoras, minutos, inicioMinutos, segundos) {
-                this.horas = horas;
-                this.inicioHoras = inicioHoras
+            function Temporizador(minutos, inicioMinutos, segundos) {
                 this.minutos = minutos;
                 this.inicioMinutos = Math.round(inicioMinutos); /* redondeo para evitar que coloquen decimales */
                 this.segundos = segundos;
-                let inicioSegundos = 59;
+                let inicioSegundos;
+                if (inicioMinutos == 0) {
+                    inicioSegundos = 0;
+                } else {
+                    inicioSegundos = 59;
+                }
                 /* termino los segundos en -1 para que en el htnl se me muestre el 0, no se muestra el -1*/
                 let finalSegundos = -1;
                 let contadorSegundos = inicioSegundos;
-                /* falta valiar que no pasen todos los parametros con 0 y agregar los dias */
-                /*  if (inicioMinutos == 0 && inicioHoras == 0) {
-                     this.inicioMinutos = inicioMinutos + 1;
-                     this.inicioHoras = 0;
-
-                 } */
-
                 this.conteoSegundos = function() {
-                    /* siwl contadorsegundos llega a -1 entonces se reinicia, ya q contaorsgunos va a pasar a sr igual a iniciosegundos: */
+                    /* si el contadorsegundos llega a -1 entonces se reinicia, ya q contaorsgunos va a pasar a sr igual a iniciosegundos: */
                     if (contadorSegundos == finalSegundos) contadorSegundos = inicioSegundos;
                     /* y si el contadoseegunos es igual a 59 entoncees decremento el minutero en 1: */
                     if (contadorSegundos == 59) this.inicioMinutos--;
-                    /* y si el minutreo llega a -1 y l contadorsegundos a 59, entonces rinicio l minutero con el paramtro que le pasé: */
-                    /* aca pongo inicioMinutos == -1 para que en el html se me muestre el 0 y contaorSEgundos == 59, para que tmb se me muestre el 0 */
-                    /* entonces en el documento html podemos ver que el timer llega a 00:00 y se reinicia, si no lo hago asi, no se muestra el 0: */
-                    if (this.inicioMinutos == -1 && contadorSegundos == 59) {
-                        this.inicioMinutos = inicioMinutos - 1;
-                        /* cuando los minutos y sgundos llgan a 0 decremneto la hora n 1:*/
-                        let horas = this.inicioHoras--;
-                        /* y si decremnto la hora en 1 entonces marco los minutos en 59: */
-                        if (horas) {
-                            this.inicioMinutos = 59
-                            document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
-                        }
-                    }
-
-                    /* el contador segundos va decrementando en 1 cada 1000ms, esto gracias a que lo meti en un setTimeout */
-                    /* uando l contaorsegunos sea menor a 10, agrego un 0 asi se mustran dos digitos en el html */
+                    /* mientras el contadorsegundos sea menor a 10, agrego un 0 asi se mustran dos digitos en el html */
                     if (contadorSegundos < 10) {
                         document.querySelector(`.${this.segundos}`).innerHTML = `0${contadorSegundos--}`;
                     } else {
@@ -251,28 +232,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     /* este if es para que si agregan mas de 60 minutos, se muestre en el html solamente dos 0 */
                     if (this.inicioMinutos > 59) {
-                        this.inicioMinutos = 59
+                        inicioMinutos = 59
+                        this.inicioMinutos = inicioMinutos
                         document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
                     };
-                    /* validacion de las horas: */
-                    if (this.inicioHoras >= 24) {
-                        this.inicioHoras = 23
-                        document.querySelector(`.${this.horas}`).innerHTML = this.inicioHoras;
-                    } else if (this.inicioHoras < 10) {
-                        document.querySelector(`.${this.horas}`).innerHTML = `0${this.inicioHoras}`;
-                    } else {
-                        document.querySelector(`.${this.horas}`).innerHTML = this.inicioHoras;
-                    };
-
+                    if (this.inicioMinutos < 0) {
+                        this.inicioMinutos = 0
+                        document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
+                    }
                     setTimeout(this.conteoSegundos.bind(this), 1000);
                 };
             };
-            /* instanio  iniializo el objeto: */
-            let promoUno = new Temporizador("hora", 0, "minuto", 5.5, 'segundo');
+            /* instancio e inicializo el objeto: */
+            let promoUno = new Temporizador("minuto", 2, 'segundo');
             promoUno.conteoSegundos();
-            let promoDos = new Temporizador("hora1", 30, "minuto1", 70, 'segundo1');
+            let promoDos = new Temporizador("minuto1", 70, 'segundo1');
             promoDos.conteoSegundos();
-            let promoTres = new Temporizador("hora2", 0, "minuto2", 0, 'segundo2');
+            let promoTres = new Temporizador("minuto2", 0, 'segundo2');
             promoTres.conteoSegundos();
 
             /* carrito: */
