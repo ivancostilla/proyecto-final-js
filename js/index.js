@@ -386,12 +386,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             /* cambiamos los precios y las imagenes */
             function comboCompleto() {
-                ingredientesElegidos()
-                    /* falta cargar la funcion de las imagenes */
-            }
+                ingredientesElegidos();
+                /* falta cargar la funcion de las imagenes */
+            };
 
             /* objeto para  ir guardando las elecciones del usuario */
-            let comboElegido = {}
+            let comboElegido = {};
 
             /* funcion para guardar cada eleccion del usuario */
             function ingredientesElegidos() {
@@ -401,8 +401,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     "adicionalDos": adicionalDosElegido(),
                     "guarnicion": guarnicionElegida(),
                     "bebida": bebidaElegida()
-                }
-            }
+                };
+            };
 
             /* carrito: */
             const carrito = document.querySelector('.carrito__productos-container'); /* contenedor de los productos en el modal */
@@ -469,8 +469,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 };
 
-                borrarHTML();
                 articulosCarrito = [];
+                borrarHTML();
+                mostrarNotificacion()
                 guardarStorage();
 
             };
@@ -561,7 +562,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             function insertarCarritoHTML() {
                 borrarHTML();
-
                 articulosCarrito.forEach(producto => {
                     /* Destrucuring sobre el objeto producto */
                     const { nombre, imagen, precio, cantidad, id } = producto;
@@ -581,26 +581,27 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>`;
                     carrito.innerHTML += row;
-                    /* actualizar cantidad en el input de cada producto: */
                     const cantidadDelProducto = carrito.querySelectorAll(".producto-cantidad__input");
                     cantidadDelProducto.forEach(cantidadInput => {
                         cantidadInput.addEventListener("change", cantidadCambiada);
-
                     });
                 });
                 /* muestro la cantidad de productos en el carrito a modo notificacion: */
+                mostrarNotificacion()
+                actualizarTotalDelCarrito();
+                guardarStorage();
+            };
+
+            function mostrarNotificacion() {
                 let mostrarCantidadDeProductos = [];
                 for (let i = 0; i < articulosCarrito.length; i++) {
                     mostrarCantidadDeProductos.push(articulosCarrito[i].cantidad)
                 };
-                mostrarCantidadDeProductos = [...mostrarCantidadDeProductos].reduce((acc, el) => acc + el, 0)
+                mostrarCantidadDeProductos = [...mostrarCantidadDeProductos].reduce((acc, el) => acc + el, 0);
                 const notificacionCarrito = document.querySelectorAll(".notificacion-carrito");
                 notificacionCarrito.forEach(notificacion => {
-
                     notificacion.innerHTML = mostrarCantidadDeProductos;
-                })
-                actualizarTotalDelCarrito();
-                guardarStorage();
+                });
             };
 
             function cantidadCambiada(e) {
