@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const burga5 = new cardsInfo(data[7].img, data[7].nombre, data[7].descripcion, data[7].precio, data[7].id);
             const burga6 = new cardsInfo(data[8].img, data[8].nombre, data[8].descripcion, data[8].precio, data[8].id);
 
-
             /* 3- guardamos el contenido de cada card en un array */
             let cardsBurgasArray = [burga1, burga2, burga3, burga4, burga5, burga6];
             let cardsExtrasArray = [papasFritas, nachos, chocloFrito];
@@ -162,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const boton = document.querySelectorAll(".botones");
             const botonCards = document.querySelectorAll(".card__button");
             const botonPromo = document.querySelectorAll(".promo__button");
+            const botnArmaTuCombo = document.querySelectorAll(".arma_button")
 
             const botonEffect = (bton) => {
                 bton.forEach(btn => {
@@ -183,17 +183,16 @@ document.addEventListener('DOMContentLoaded', function() {
             botonEffect(boton);
             botonEffect(botonCards);
             botonEffect(botonPromo);
-
+            botonEffect(botnArmaTuCombo);
             /* ventana modal: */
             const ventanaModal = document.querySelector(".contenedor-modal__circle");
             const cerrarModal = document.querySelectorAll(".cerrar-modal");
-
             cerrarModal.forEach(btn => {
                 btn.addEventListener("click", () => {
                     ventanaModal.classList.toggle('contenedor-modal__open');
                     ventanaModal.classList.toggle('contenedor-modal__close');
                 });
-            })
+            });
 
             /* temporizador de la seccion promos: */
             /* paso como parametros primero: la clase html que muestra los minutos,
@@ -201,10 +200,15 @@ document.addEventListener('DOMContentLoaded', function() {
             tercero: la clase html que muestra los segundos */
             function Temporizador(minutos, inicioMinutos, segundos) {
                 this.minutos = minutos;
-                this.inicioMinutos = Math.round(inicioMinutos); /* redondeo para evitar que coloquen decimales */
                 this.segundos = segundos;
+                /* este if es para que si agregan mas de 60 minutos, se muestre en el html solamente dos 0 */
+                if (inicioMinutos > 59) {
+                    this.inicioMinutos = 59
+                } else {
+                    this.inicioMinutos = Math.round(inicioMinutos); /* redondeo para evitar que coloquen decimales */
+                }
                 let inicioSegundos;
-                if (inicioMinutos == 0) {
+                if (inicioMinutos <= 0) {
                     inicioSegundos = 0;
                 } else {
                     inicioSegundos = 59;
@@ -230,12 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
                     }
-                    /* este if es para que si agregan mas de 60 minutos, se muestre en el html solamente dos 0 */
-                    if (this.inicioMinutos > 59) {
-                        inicioMinutos = 59
-                        this.inicioMinutos = inicioMinutos
-                        document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
-                    };
+                    /* si iniciominutos tiene valor negativo, va a valer 0 */
                     if (this.inicioMinutos < 0) {
                         this.inicioMinutos = 0
                         document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
@@ -243,13 +242,157 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(this.conteoSegundos.bind(this), 1000);
                 };
             };
+
             /* instancio e inicializo el objeto: */
-            let promoUno = new Temporizador("minuto", 2, 'segundo');
+            let promoUno = new Temporizador("minuto", 5, 'segundo');
             promoUno.conteoSegundos();
             let promoDos = new Temporizador("minuto1", 70, 'segundo1');
             promoDos.conteoSegundos();
             let promoTres = new Temporizador("minuto2", 0, 'segundo2');
             promoTres.conteoSegundos();
+
+            /* seccion armá tu combo: */
+
+            /* nombre y precio de los ingrdientes para comparar con los options dentro de los select: */
+            let cantidadMedallones = [
+                ["Sin medallón", 0],
+                ["1 medallón", 60],
+                ["2 medallones", 120],
+                ["3 medallones", 180],
+                ["4 medallones", 240]
+            ];
+            let adicionalUno = [
+                ["Sin adicional", 0],
+                ["Cheddar", 20]
+            ];
+            let adicionalDos = [
+                ["Sin adicional1", 0],
+                ["Panceta", 20]
+            ];
+            let guarnicion = [
+                ["Sin guarnicion", 0],
+                ["Papas Fritas", 120],
+                ["Choclo Frito", 130]
+            ];
+            let bebida = [
+                ["Sin bebida", 0],
+                ["Coca-Cola", 65],
+                ["Fanta", 60],
+                ["Sprite", 55],
+                ["Cerveza", 80]
+            ];
+
+            /* guardo en variables las clases que contienen los select: */
+            const selectBurga = document.querySelector(".select-burga");
+            const selectAdicionalUno = document.querySelector(".select-adicional1");
+            const selectAdicionalDos = document.querySelector(".select-adicional2");
+            const selectGuarnicion = document.querySelector(".select-guarnicion");
+            const selectBebida = document.querySelector(".select-bebida");
+
+            /* inicialco los precios en 0 */
+            let precioMedallon = 0;
+            let precioAdicionalUno = 0;
+            let precioAdicionalDos = 0;
+            let precioGuarnicion = 0;
+            let precioBebida = 0;
+
+            /* guardo en la variable las clases que muestran el precio final: */
+            const precioTotalDelCombo = document.querySelectorAll(".precioItem");
+            /* funcion que suma los precios de cada input y los guarda en el innerText de la variable precioTotalDelCombo: */
+            function sumaTotalCombo() {
+                precioTotalDelCombo.forEach(precio => {
+                    let totalDelCombo = precioMedallon + precioAdicionalUno + precioAdicionalDos + precioGuarnicion + precioBebida;
+                    precio.innerText = `$${totalDelCombo}`;
+                });
+            };
+
+            /* funciones para capturar la seleccion del usuario y sumar los precios: */
+            function MedallonesElegido() {
+                // Suma el precio parcial
+                cantidadMedallones.forEach(value => {
+                    if (value[0] == selectBurga.value) {
+                        precioMedallon = value[1];
+                        sumaTotalCombo();
+                    };
+                });
+                return selectBurga.value;
+            };
+
+            function adicionalUnoElegido() {
+                // Suma el precio parcial
+                adicionalUno.forEach(value => {
+                    if (value[0] === selectAdicionalUno.value) {
+                        precioAdicionalUno = value[1];
+                        sumaTotalCombo();
+                    };
+                });
+                return selectAdicionalUno.value;
+            };
+
+            function adicionalDosElegido() {
+                // Suma el precio parcial
+                adicionalDos.forEach((value) => {
+                    if (selectAdicionalDos.value == value[0]) {
+                        precioAdicionalDos = value[1];
+                        sumaTotalCombo();
+                        return selectAdicionalDos.value;
+                    };
+                });
+            };
+
+            function guarnicionElegida() {
+                // Suma el precio parcial
+                guarnicion.forEach((value) => {
+                    if (value[0] === selectGuarnicion.value) {
+                        precioGuarnicion = value[1];
+                        sumaTotalCombo();
+                    }
+                });
+                return selectGuarnicion.value;
+            };
+
+            function bebidaElegida() {
+                // Suma el precio parcial
+                bebida.forEach((value) => {
+                    if (value[0] === selectBebida.value) {
+                        precioBebida = value[1];
+                        sumaTotalCombo();
+                    };
+                });
+                return selectBebida.value;
+            };
+
+            /* eventos q se ejecutan al cambiar el valor del select: */
+            selectBurga.addEventListener("change", comboCompleto);
+            selectAdicionalUno.addEventListener("change", comboCompleto);
+            selectAdicionalDos.addEventListener("change", comboCompleto);
+            selectGuarnicion.addEventListener("change", comboCompleto);
+            selectBebida.addEventListener("change", comboCompleto);
+            /* evento para prevenir la recarga de la ventana: */
+            const botonCombo = document.querySelector(".arma_button");
+            botonCombo.addEventListener("click", (e) => {
+                e.preventDefault();
+            });
+
+            /* cambiamos los precios y las imagenes */
+            function comboCompleto() {
+                ingredientesElegidos()
+                /* falta cargar la funcion de las imagenes */
+            }
+
+            /* objeto para  ir guardando las elecciones del usuario */
+            let comboElegido = {}
+
+            /* funcion para guardar cada eleccion del usuario */
+            function ingredientesElegidos() {
+                comboElegido = {
+                    "medallones": MedallonesElegido(),
+                    "adicionalUno": adicionalUnoElegido(),
+                    "adicionalDos": adicionalDosElegido(),
+                    "guarnicion": guarnicionElegida(),
+                    "bebida": bebidaElegida()
+                }
+            }
 
             /* carrito: */
             const carrito = document.querySelector('.carrito__productos-container'); /* contenedor de los productos en el modal */
@@ -355,9 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     /* Agregar al carrito un producto ya existente */
                     const productos = articulosCarrito.map(producto => {
                         if (producto.id === productoAgregado.id) {
-                            console.log("🚀 ~ file: index.js ~ line 375 ~ mi ~ m", m)
-                            console.log("🚀 ~ file: index.js ~ line 375 ~ mi ~ m", m)
-                                /*selecciono el ttulo del producto:*/
+                            /*selecciono el ttulo del producto:*/
                             const tituloDelProducto = carrito.querySelectorAll(".producto-contenido__titulo");
                             /* recorro cada titulo: */
                             for (let i = 0; i < tituloDelProducto.length; i++) {
@@ -437,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     });
                 });
-                /* muestro la cantidad de productos en el crrito a modo notificacion: */
+                /* muestro la cantidad de productos en el carrito a modo notificacion: */
                 let mostrarCantidadDeProductos = [];
                 for (let i = 0; i < articulosCarrito.length; i++) {
                     mostrarCantidadDeProductos.push(articulosCarrito[i].cantidad)

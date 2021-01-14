@@ -56,11 +56,50 @@ empezar con la seccion principal de la pagina -->
             </article>
         </section>
         <section class="combo" id="combo">
-            <!-- aqui irá la vntana con las funciones para armar el combo de hamburguesa -->
-            <p>ventana principal</p>
-            <h1>Armá tu combo</h1>
-            <p>debe ir un input y algunos raiobuttons para legir enre diferentes opcions</p>
-            <p>agregar boton de "comprar"</p>
+            <h1>La Burgeria Inc</h1>
+            <div class="combo__container">
+                <div class="combo__img-box">
+                    <img class="" src="img/seccion-arma-tu-combo/brg.png" alt="">
+                    <img src="img/seccion-arma-tu-combo/coca.png" alt="">
+                </div>
+                <form class="combo__form" action="#armatucombo">
+                    <h2 class="tituloItem none">Armá tu combo</h2>
+                    <img class="none imgItem" src="img/seccion-arma-tu-combo/brg.png" alt="">
+                    <select name="cantidadMedallones" id="" class="select-burga">
+                        <option value="Sin medallón" selected>Sin medallón</option>
+                        <option value="1 medallón">1 medallón</option>
+                        <option value="2 medallones">2 medallones</option>
+                        <option value="3 medallones">3 medallones</option>
+                        <option value="4 medallones">4 medallones</option>
+                    </select>
+                    <select name="adicionalUno" id="" class="select-adicional1">
+                        <option value="Sin adicional" selected>Sin adicional</option>
+                        <option value="Cheddar">Cheddar</option>
+                    </select>
+                    <select name="adicionalDos" id="" class="select-adicional2">
+                        <option value="Sin adicional1" selected>Sin adicional</option>
+                        <option value="Panceta">Panceta</option>
+                    </select>
+                    <select name="guarnicion" id="" class="select-guarnicion">
+                        <option value="Sin guarnicion" selected>Sin guarnicion</option>
+                        <option value="Papas Fritas">Papas Fritas</option>
+                        <option value="Choclo Frito">Choclo Frito</option>
+                    </select>
+                    <select name="bebida" id="" class="select-bebida">
+                        <option value="Sin bebida" selected>Sin bebida</option>
+                        <option value="Coca-Cola">Coca-Cola</option>
+                        <option value="Fanta">Fanta</option>
+                        <option value="Sprite">Sprite</option>
+                        <option value="Cerveza">Cerveza</option>
+                    </select>
+                    <p class="none">Precio de tu combo: <span class="precioItem">$00.00</span></p>
+                    <div class="combo__precio">
+                        <p class="">Precio de tu combo: <span class="precioItem">$00.00</span></p>
+                    </div>
+                    <button class="botones agregarAlCarrito arma_button" id="12">Agregar al arrito</button>
+                </form>
+
+            </div>
         </section>
         <section>
             <article class="promo">
@@ -108,7 +147,6 @@ empezar con la seccion principal de la pagina -->
         <section class="burgas" id="lasBurgas">
             <article>
                 <h2 class="neon">- Las Burgas -</h2>
-
                 <div class="slider card__container-burgas owl-carousel">
                 </div>
             </article>
@@ -168,7 +206,6 @@ empezar con la seccion principal de la pagina -->
             <img class="galeria__img" src="img/burger5.webp" alt="hamburguesa" title="hamburguesa con cebolla" loading="lazy">
             <img class="galeria__img" src="img/burger6.webp" alt="hamburguesa" title="hamburguesa crispy" loading="lazy">
         </section>
-
     </main>
     <footer class="footer" id="contactanos">
         <div class="footer__info">
