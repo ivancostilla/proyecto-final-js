@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 //8- Se asignan las cards con distinta info.. a los distintos contenedores:
                 containers[i].innerHTML = htmlCode;
-            }
+            };
 
             /* agregando la clase popup a las img de las cards, 
              la coloco aqui xq tengo que invocar la funcion despues de haber
@@ -206,13 +206,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.inicioMinutos = 59
                 } else {
                     this.inicioMinutos = Math.round(inicioMinutos); /* redondeo para evitar que coloquen decimales */
-                }
+                };
                 let inicioSegundos;
                 if (inicioMinutos <= 0) {
                     inicioSegundos = 0;
                 } else {
                     inicioSegundos = 59;
-                }
+                };
                 /* termino los segundos en -1 para que en el htnl se me muestre el 0, no se muestra el -1*/
                 let finalSegundos = -1;
                 let contadorSegundos = inicioSegundos;
@@ -233,12 +233,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.querySelector(`.${this.minutos}`).innerHTML = `0${this.inicioMinutos}`;
                     } else {
                         document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
-                    }
+                    };
                     /* si iniciominutos tiene valor negativo, va a valer 0 */
                     if (this.inicioMinutos < 0) {
                         this.inicioMinutos = 0
                         document.querySelector(`.${this.minutos}`).innerHTML = this.inicioMinutos;
-                    }
+                    };
                     setTimeout(this.conteoSegundos.bind(this), 1000);
                 };
             };
@@ -255,26 +255,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
             /* nombre y precio de los ingrdientes para comparar con los options dentro de los select: */
             let cantidadMedallones = [
-                ["1 medallón", 60],
-                ["2 medallones", 120],
-                ["3 medallones", 180],
-                ["4 medallones", 240]
+                ["1-medallon", 60],
+                ["2-medallones", 120],
+                ["3-medallones", 180],
+                ["4-medallones", 240]
             ];
             let adicionalUno = [
-                ["Sin adicional", 0],
+                ["Sin-adicional", 0],
                 ["Cheddar", 20]
             ];
             let adicionalDos = [
-                ["Sin adicional1", 0],
+                ["SinAdicional", 0],
                 ["Panceta", 20]
             ];
             let guarnicion = [
-                ["Sin guarnicion", 0],
-                ["Papas Fritas", 120],
-                ["Choclo Frito", 130]
+                ["Sin-guarnicion", 0],
+                ["Papas-Fritas", 120],
+                ["Choclo-Frito", 130]
             ];
             let bebida = [
-                ["Sin bebida", 0],
+                ["Sin-bebida", 0],
                 ["Coca-Cola", 65],
                 ["Fanta", 60],
                 ["Sprite", 55],
@@ -334,9 +334,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (selectAdicionalDos.value == value[0]) {
                         precioAdicionalDos = value[1];
                         sumaTotalCombo();
-                        return selectAdicionalDos.value;
                     };
                 });
+                return selectAdicionalDos.value;
             };
 
             function guarnicionElegida() {
@@ -376,18 +376,18 @@ document.addEventListener('DOMContentLoaded', function() {
             cada vez que le doy al boton "agregar al carrito". asi, cada vez que cambie el precio del producto
             por los ingredientes elegidos por el usuario, nos crea un roducto distinto
             lo unico que hago acá es cambiar el id del boton cada vez que se hace click, y asi se crea un producto diferente */
-            let idnueva = 100;
+            let idNueva = 100;
 
             function nuevaId() {
-                idnueva = idnueva * 2;
-                botonCombo.setAttribute('ID', `${idnueva}`);
+                idNueva = idNueva * 2;
+                botonCombo.setAttribute('ID', `${idNueva}`);
             };
             botonCombo.addEventListener("click", nuevaId);
 
             /* cambiamos los precios y las imagenes */
             function comboCompleto() {
                 ingredientesElegidos();
-                /* falta cargar la funcion de las imagenes */
+                cambiarImgCombo()
             };
 
             /* objeto para  ir guardando las elecciones del usuario */
@@ -402,6 +402,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     "guarnicion": guarnicionElegida(),
                     "bebida": bebidaElegida()
                 };
+            };
+            /* falta crear las imagenes y recordar cambiar la extension png a webp */
+            function cambiarImgCombo() {
+                const srcimg =
+                    `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.png`;
+                const comboImg = document.querySelector(".combo__img");
+                comboImg.setAttribute('src', srcimg);
             };
 
             /* carrito: */
@@ -420,8 +427,16 @@ document.addEventListener('DOMContentLoaded', function() {
             botonComprar.addEventListener('click', hacerCompra);
             /* cargo productos que esten seleccionados con antrioridad en el carrito: */
             function load() {
+                /* cargo el storage al cargar la pagina */
                 articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
                 insertarCarritoHTML();
+
+                /* al cargar la pagina pongo los valores de los select por defecto */
+                selectBurga.value = '1-medallon';
+                selectAdicionalUno.value = 'Sin-adicional';
+                selectAdicionalDos.value = 'SinAdicional';
+                selectGuarnicion.value = 'Sin-guarnicion';
+                selectBebida.value = 'Sin-bebida';
             };
             load();
 
@@ -429,6 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 /* alerts para indicarle al usuario que el carrito está vacío:
                 o en el else.. indicarle que la compra fué exitosa: */
                 if (carrito.innerHTML == "") {
+                    console.log("🚀 ~ file: index.js ~ line 447 ~ cambiarImgCombo ~ srcimg", srcimg)
                     Command: toastr["error"]("intenta agregar algún producto", "El carrito está vacío");
                     toastr.options = {
                         "closeButton": true,
@@ -438,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         "positionClass": "toast-top-center",
                         "preventDuplicates": false,
                         "onclick": null,
-                        "showDuration": "300",
+                        "showDuration": "1000",
                         "hideDuration": "1000",
                         "timeOut": "3000",
                         "extendedTimeOut": "1000",
@@ -447,8 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     };
-                }
-                else {
+                } else {
                     Command: toastr["success"]("recibirás tu pedido pronto", "Gracias por tu compra");
                     toastr.options = {
                         "closeButton": true,
@@ -535,10 +550,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         "positionClass": "toast-top-center",
                                         "preventDuplicates": false,
                                         "onclick": null,
-                                        "showDuration": "300",
-                                        "hideDuration": "1000",
-                                        "timeOut": "3000",
-                                        "extendedTimeOut": "1000",
+                                        "showDuration": "100",
+                                        "hideDuration": "100",
+                                        "timeOut": "100",
+                                        "extendedTimeOut": "100",
                                         "showEasing": "swing",
                                         "hideEasing": "swing",
                                         "showMethod": "fadeIn",
