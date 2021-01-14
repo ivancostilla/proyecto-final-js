@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             /* nombre y precio de los ingrdientes para comparar con los options dentro de los select: */
             let cantidadMedallones = [
-                ["Sin medallón", 0],
                 ["1 medallón", 60],
                 ["2 medallones", 120],
                 ["3 medallones", 180],
@@ -302,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             function sumaTotalCombo() {
                 precioTotalDelCombo.forEach(precio => {
                     let totalDelCombo = precioMedallon + precioAdicionalUno + precioAdicionalDos + precioGuarnicion + precioBebida;
-                    precio.innerText = `$${totalDelCombo}`;
+                    precio.innerText = `$${totalDelCombo}.00`;
                 });
             };
 
@@ -373,11 +372,22 @@ document.addEventListener('DOMContentLoaded', function() {
             botonCombo.addEventListener("click", (e) => {
                 e.preventDefault();
             });
+            /* funcion para que se cree un nuevo producto DISTINTO dentro del modal del carrito
+            cada vez que le doy al boton "agregar al carrito". asi, cada vez que cambie el precio del producto
+            por los ingredientes elegidos por el usuario, nos crea un roducto distinto
+            lo unico que hago acá es cambiar el id del boton cada vez que se hace click, y asi se crea un producto diferente */
+            let idnueva = 100;
+
+            function nuevaId() {
+                idnueva = idnueva * 2;
+                botonCombo.setAttribute('ID', `${idnueva}`);
+            };
+            botonCombo.addEventListener("click", nuevaId);
 
             /* cambiamos los precios y las imagenes */
             function comboCompleto() {
                 ingredientesElegidos()
-                /* falta cargar la funcion de las imagenes */
+                    /* falta cargar la funcion de las imagenes */
             }
 
             /* objeto para  ir guardando las elecciones del usuario */
