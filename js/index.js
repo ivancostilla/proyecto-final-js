@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let guarnicion = [
                 ["Sin-guarnicion", 0],
                 ["Papas-Fritas", 120],
-                ["Choclo-Frito", 130]
+                ["arosCebolla", 130]
             ];
             let bebida = [
                 ["Sin-bebida", 0],
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let precioBebida = 0;
 
             /* guardo en la variable las clases que muestran el precio final: */
-            const precioTotalDelCombo = document.querySelectorAll(".precioItem");
+            const precioTotalDelCombo = document.querySelectorAll(".precioPromo");
             /* funcion que suma los precios de cada input y los guarda en el innerText de la variable precioTotalDelCombo: */
             function sumaTotalCombo() {
                 precioTotalDelCombo.forEach(precio => {
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
             /* falta crear las imagenes y recordar cambiar la extension png a webp */
             function cambiarImgCombo() {
                 const srcimg =
-                    `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.png`;
+                    `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.jpg`;
                 const comboImg = document.querySelector(".combo__img");
                 comboImg.setAttribute('src', srcimg);
             };
@@ -444,7 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 /* alerts para indicarle al usuario que el carrito está vacío:
                 o en el else.. indicarle que la compra fué exitosa: */
                 if (carrito.innerHTML == "") {
-                    console.log("🚀 ~ file: index.js ~ line 447 ~ cambiarImgCombo ~ srcimg", srcimg)
                     Command: toastr["error"]("intenta agregar algún producto", "El carrito está vacío");
                     toastr.options = {
                         "closeButton": true,
@@ -463,7 +462,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     };
-                } else {
+                }
+                else {
                     Command: toastr["success"]("recibirás tu pedido pronto", "Gracias por tu compra");
                     toastr.options = {
                         "closeButton": true,

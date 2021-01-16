@@ -228,19 +228,32 @@ body {
       .combo .combo__container {
         flex-wrap: nowrap; } }
     .combo .combo__container .combo__img-box {
-      background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%);
       border-radius: 5px;
       min-width: 250px;
       width: 800px;
       margin: 10px;
       height: 350px;
-      border: 2px solid #fbeb04; }
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
       @media screen and (min-width: 700px) {
         .combo .combo__container .combo__img-box {
           height: 500px; } }
       .combo .combo__container .combo__img-box img {
-        height: 200px;
-        width: 200px; }
+        width: 100%;
+        height: auto;
+        border: 2px solid #fbeb04; }
+        @media screen and (min-width: 580px) {
+          .combo .combo__container .combo__img-box img {
+            height: 100%;
+            object-fit: contain;
+            border: none; } }
+        @media screen and (min-width: 700px) {
+          .combo .combo__container .combo__img-box img {
+            height: auto;
+            border: 2px solid #fbeb04;
+            object-fit: unset; } }
     .combo .combo__container .combo__form {
       display: flex;
       justify-content: center;
@@ -298,19 +311,32 @@ body {
       .combo .combo__container {
         flex-wrap: nowrap; } }
     .combo .combo__container .combo__img-box {
-      background-image: linear-gradient(90deg, #f00000 0%, #c20a0a 100%);
       border-radius: 5px;
       min-width: 250px;
       width: 800px;
       margin: 10px;
       height: 350px;
-      border: 2px solid #fbeb04; }
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
       @media screen and (min-width: 700px) {
         .combo .combo__container .combo__img-box {
           height: 500px; } }
       .combo .combo__container .combo__img-box img {
-        height: 200px;
-        width: 200px; }
+        width: 100%;
+        height: auto;
+        border: 2px solid #fbeb04; }
+        @media screen and (min-width: 580px) {
+          .combo .combo__container .combo__img-box img {
+            height: 100%;
+            object-fit: contain;
+            border: none; } }
+        @media screen and (min-width: 700px) {
+          .combo .combo__container .combo__img-box img {
+            height: auto;
+            border: 2px solid #fbeb04;
+            object-fit: unset; } }
     .combo .combo__container .combo__form {
       display: flex;
       justify-content: center;
