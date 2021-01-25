@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
             /* falta crear las imagenes y recordar cambiar la extension png a webp */
             function cambiarImgCombo() {
                 const srcimg =
-                    `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.jpg`;
+                    `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.webp`;
                 const comboImg = document.querySelector(".combo__img");
                 comboImg.setAttribute('src', srcimg);
             };
