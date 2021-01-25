@@ -408,7 +408,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const srcimg =
                     `img/seccion-arma-tu-combo/${comboElegido.medallones}--${comboElegido.adicionalUno}--${comboElegido.adicionalDos}--${comboElegido.guarnicion}--${comboElegido.bebida}.webp`;
                 const comboImg = document.querySelector(".combo__img");
+                const comboImgCarrito = document.querySelector(".combo__img-carrito");
                 comboImg.setAttribute('src', srcimg);
+                comboImgCarrito.setAttribute('src', srcimg);
+
             };
 
             /* carrito: */
